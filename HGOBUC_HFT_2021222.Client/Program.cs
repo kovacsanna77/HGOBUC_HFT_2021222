@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HGOBUC_HFT_2021222.Repository;
+using System;
 
 namespace HGOBUC_HFT_2021222.Client
 {
@@ -6,7 +7,12 @@ namespace HGOBUC_HFT_2021222.Client
     {
         static void Main(string[] args)
         {
-            
+            MovieDbContext ctx = new MovieDbContext();
+
+           foreach(var item in ctx.Movies)
+            {
+                Console.WriteLine(item.Title);
+            }
         }
     }
 }

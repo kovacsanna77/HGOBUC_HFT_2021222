@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.32106.194
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HGOBUC_HFT_2021222.Client", "HGOBUC_HFT_2021222.Client\HGOBUC_HFT_2021222.Client.csproj", "{E92FA405-D54C-4289-B843-81489F20B8E4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B893A6F6-02B5-4E3E-B4CE-01E7D7BD5871} = {B893A6F6-02B5-4E3E-B4CE-01E7D7BD5871}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HGOBUC_HFT_2021222.Models", "HGOBUC_HFT_2021222.Models\HGOBUC_HFT_2021222.Models.csproj", "{A8C8FF1E-C0A7-43D2-9636-F0BA7B2B7733}"
 EndProject
