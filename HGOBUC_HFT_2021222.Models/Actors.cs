@@ -12,7 +12,7 @@ namespace HGOBUC_HFT_2021222.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ActorID { get; set; }  
+        public int ActorId { get; set; }  
 
        public string ActorName { get; set; }
 
@@ -20,6 +20,13 @@ namespace HGOBUC_HFT_2021222.Models
         public Actors()
         {
 
+        }
+
+        public Actors(string line)
+        {
+            string[] split = line.Split('#');
+            ActorId = int.Parse(split[0]);
+            ActorName = split[1];
         }
     }
 }

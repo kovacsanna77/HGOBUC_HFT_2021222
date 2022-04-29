@@ -33,10 +33,32 @@ namespace HGOBUC_HFT_2021222.Repository
             .HasForeignKey(movie => movie.NetworkId)
             .OnDelete(DeleteBehavior.Cascade));
 
-            modelBuilder.Entity<Actors>()
-                .HasMany(x => x.Movies)
-                .WithMany(x => x.Actors);
-                
+
+            modelBuilder.Entity<Movie>().HasData(new Movie[]
+             {
+                   new Movie("1#Vincenzo#2020#tvN#20#90#1"),
+                   new Movie("2#It's okay to Not Be Okay#2020#16#75#1"),
+                   new Movie("3#Save me#2017#16#60#6")
+             });
+
+            modelBuilder.Entity<Actors>().HasData(new Actors[]
+                        {
+                new Actors("1#Song Joong Gi"),
+                new Actors("2#Ok Taec Yeon"),
+                new Actors("3# Seo Ye Ji")
+            });
+
+
+             modelBuilder.Entity<Network>().HasData(new Network[]
+              {
+                    new Network("1#tvN"),
+                    new Network("2#jTBC"),
+                    new Network("3#KBS"),
+                    new Network("4#SBS"),
+                    new Network("5#MBC"),
+                    new Network("6#Netflix")
+               });
+
         }
     }
 }

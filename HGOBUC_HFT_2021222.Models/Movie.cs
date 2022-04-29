@@ -28,5 +28,16 @@ namespace HGOBUC_HFT_2021222.Models
 
         }
 
+        public Movie(string line)
+        {
+            string[] split = line.Split('#');
+            MovieId = int.Parse(split[0]);
+            Title= split[1];
+            Aired = int.Parse(split[2]);
+            Episodes = int.Parse(split[3]);
+            Duration = int.Parse(split[4]);
+            NetworkId = int.Parse(split[5]);
+        }
+
     }
 }

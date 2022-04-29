@@ -15,5 +15,18 @@ namespace HGOBUC_HFT_2021222.Models
         public int NetworkId { get; set; }
         public string NetworkName { get;   set; }
         public virtual ICollection<Movie> Movies{ get; set; }
+
+        public Network()
+        {
+            Movies = new HashSet<Movie>();
+        }
+
+        public Network(string line)
+        {
+            string[] split = line.Split('#');
+            NetworkId = int.Parse(split[0]);
+            NetworkName = split[1];
+            Movies = new HashSet<Movie>();
+        }
     }
 }
