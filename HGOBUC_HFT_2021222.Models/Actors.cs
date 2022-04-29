@@ -12,7 +12,7 @@ namespace HGOBUC_HFT_2021222.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        private int actorID { get; set; }  
+        private int ActorID { get; set; }  
 
         private string ActorName { get; set; }
 

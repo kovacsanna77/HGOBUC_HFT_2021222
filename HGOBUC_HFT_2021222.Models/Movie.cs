@@ -18,6 +18,7 @@ namespace HGOBUC_HFT_2021222.Models
         public string Network { get; set; }
         public int Episodes { get; set; }
         public int Duration { get; set; }
+        public int NetworkId { get; set; }
         public virtual ICollection<Actors> Actors { get; set; }
 
     }
