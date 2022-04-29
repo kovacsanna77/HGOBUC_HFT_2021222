@@ -12,9 +12,14 @@ namespace HGOBUC_HFT_2021222.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        private int ActorID { get; set; }  
+        public int ActorID { get; set; }  
 
-        private string ActorName { get; set; }
+       public string ActorName { get; set; }
 
+        public virtual ICollection<Movie> Movies { get; set; }
+        public Actors()
+        {
+
+        }
     }
 }

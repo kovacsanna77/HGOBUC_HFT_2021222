@@ -27,8 +27,16 @@ namespace HGOBUC_HFT_2021222.Repository
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Movie>(movie => movie
+            .HasOne(movie => movie.Network)
+            .WithMany(network => network.Movies)
+            .HasForeignKey(movie => movie.NetworkId)
+            .OnDelete(DeleteBehavior.Cascade));
 
-
+            modelBuilder.Entity<Actors>()
+                .HasMany(x => x.Movies)
+                .WithMany(x => x.Actors);
+                
         }
     }
 }
