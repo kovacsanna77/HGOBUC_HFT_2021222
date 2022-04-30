@@ -46,7 +46,7 @@ namespace HGOBUC_HFT_2021222.Repository
 
             modelBuilder.Entity<Actors>().HasData(new Actors[]
                         {
-                new Actors("1#Song Joong Gi"),
+                new Actors("1#Song Jong Gi"),
                 new Actors("2#Ok Taec Yeon"),
                 new Actors("3#Seo Ye Ji"),
                 new Actors("4#Han So Hee"),
