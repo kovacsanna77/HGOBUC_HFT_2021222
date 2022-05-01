@@ -7,31 +7,33 @@ using System.Threading.Tasks;
 
 namespace HGOBUC_HFT_2021222.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public abstract class Repository<T> : IRepository<T> where T : class
     {
+        protected MovieDbContext ctx;
+        public Repository( MovieDbContext ctx )
+        {
+            this.ctx = ctx;
+        }
         public void Create(T item)
         {
-            throw new NotImplementedException();
+            ctx.Set<T>().Add(item);
+            ctx.SaveChanges();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            ctx.Set<T>().Remove(Read(id));
+            ctx.SaveChanges();
         }
 
-        public T Read(int id)
-        {
-            throw new NotImplementedException();
-        }
 
         public IQueryable<T> ReadAll()
         {
-            throw new NotImplementedException();
+            return ctx.Set<T>();
         }
 
-        public void Update(T item)
-        {
-            throw new NotImplementedException();
-        }
+        public abstract void Update(T item);
+        public abstract T Read(int id);
+
     }
 }

@@ -9,6 +9,7 @@ namespace HGOBUC_HFT_2021222.Repository
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Actors> Actors { get; set; }
         public DbSet<Network> Networks { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
         public MovieDbContext()
         {

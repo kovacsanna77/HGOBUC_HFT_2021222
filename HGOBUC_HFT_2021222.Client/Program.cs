@@ -12,6 +12,10 @@ namespace HGOBUC_HFT_2021222.Client
            foreach(var item in ctx.Movies)
             {
                 Console.WriteLine(item.Title);
+                foreach(var role in item.Roles)
+                {
+                    Console.WriteLine("\t"+ role.RoleName + " : " + role.Actor.ActorName);
+                }
             }
         }
     }
