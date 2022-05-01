@@ -91,7 +91,7 @@ namespace HGOBUC_HFT_2021222.Repository
                 new Role("3#1#6#2#Hong Cha Young"),
                 new Role("4#3#3#1#Yoon Ji Woo"),
                 new Role("5#3#4#2#Jeon Pil Do"),
-                new Role("6#2#4#1#Park Sae Roy"),
+                new Role("6#2#5#1#Park Sae Roy"),
                 new Role("7#4#4#1#Do Bae Man")
 
 
