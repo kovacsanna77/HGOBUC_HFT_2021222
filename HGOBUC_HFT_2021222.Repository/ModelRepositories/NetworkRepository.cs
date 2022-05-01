@@ -10,5 +10,6 @@ namespace HGOBUC_HFT_2021222.Repository.ModelRepositories
 {
     public class NetworkRepository: Repository<Network>, IRepository<Network>
     {
+
     }
 }

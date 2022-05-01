@@ -22,6 +22,7 @@ namespace HGOBUC_HFT_2021222.Models
         public int NetworkId { get; set; }
         public virtual Network Network { get; set; }
         public virtual ICollection<Actors> Actors { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
 
         public Movie()
         {

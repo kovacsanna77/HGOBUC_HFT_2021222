@@ -17,6 +17,7 @@ namespace HGOBUC_HFT_2021222.Models
        public string ActorName { get; set; }
 
         public virtual ICollection<Movie> Movies { get; set; }
+        public virtual ICollection<Role> Roles { get; set; }
         public Actors()
         {
 
