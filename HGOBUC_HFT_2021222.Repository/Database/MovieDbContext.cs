@@ -69,7 +69,7 @@ namespace HGOBUC_HFT_2021222.Repository
                 new Actors("2#Ok Taec Yeon"),
                 new Actors("3#Han So Hee"),
                 new Actors("4#Ahn Bo Hyun"),
-                new Actors("4#Park Seo Joon"),
+                new Actors("5#Park Seo Joon"),
                 new Actors("6#Jeon Yeo Bin")
             });
 
