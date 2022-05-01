@@ -9,8 +9,4 @@
     <ProjectReference Include="..\HGOBUC_HFT_2021222.Repository\HGOBUC_HFT_2021222.Repository.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Classes\" />
-  </ItemGroup>
-
 </Project>

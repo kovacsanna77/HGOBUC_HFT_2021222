@@ -11,8 +11,8 @@ namespace HGOBUC_HFT_2021222.Logic.Interfaces
     {
         void Create(Network item);
         Network Read(int id);
-        void Update(Actors item);
+        void Update(Network item);
         void Delete(int id);
-        IEnumerable<Network> ReadAll();
+        IQueryable<Network> ReadAll();
     }
 }
