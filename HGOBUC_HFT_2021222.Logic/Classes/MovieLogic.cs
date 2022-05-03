@@ -1,6 +1,7 @@
 ﻿using HGOBUC_HFT_2021222.Logic.Interfaces;
 using HGOBUC_HFT_2021222.Models;
 using HGOBUC_HFT_2021222.Repository.Interface;
+using HGOBUC_HFT_2021222.Repository.ModelRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -30,7 +31,12 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
 
         public Movie Read(int id)
         {
-            return this.repo.Read(id);
+            var movie = this.repo.Read(id);
+            if(movie == null)
+            {
+                throw new ArgumentException("This movie doesn't exists!");
+            }
+            return movie ;
         }
 
         public IQueryable<Movie> ReadAll()
@@ -43,5 +49,19 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
         {
             this.repo.Update(item);
         }
+
+        //5 NON CRUD
+
+
+        //Avarage dramas by network
+        public IEnumerable<int> AvgMovieByNetwork(string NetworkName)
+        {
+            return this.repo.ReadAll().Where(x => x.Network.NetworkName == NetworkName).Select(x => x.Network.Movies.Count);
+            
+        }
+        //Avarage episodes by actor
+
     }
+
+    
 }

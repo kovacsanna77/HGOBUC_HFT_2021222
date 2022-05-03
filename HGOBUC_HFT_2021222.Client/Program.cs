@@ -1,4 +1,6 @@
-﻿using HGOBUC_HFT_2021222.Repository;
+﻿using HGOBUC_HFT_2021222.Logic.Classes;
+using HGOBUC_HFT_2021222.Repository;
+using HGOBUC_HFT_2021222.Repository.ModelRepositories;
 using System;
 
 namespace HGOBUC_HFT_2021222.Client
@@ -9,14 +11,17 @@ namespace HGOBUC_HFT_2021222.Client
         {
             MovieDbContext ctx = new MovieDbContext();
 
-           foreach(var item in ctx.Movies)
-            {
-                Console.WriteLine(item.Title);
-                foreach(var role in item.Roles)
-                {
-                    Console.WriteLine("\t"+ role.RoleName + " : " + role.Actor.ActorName);
-                }
-            }
+            var movieRepo = new MovieRepository(ctx);
+            var actorRepo = new ActorRepository(ctx);
+            var roleRepo = new RoleRepository(ctx);
+            var networkRepo = new NetworkRepository(ctx);
+
+            var movieLogic = new MovieLogic(movieRepo);
+            var actorLogic = new ActorLogic(actorRepo);
+            var roleLogic = new RoleLogic(roleRepo);
+            var networkLogic = new NetworkLogic(networkRepo);
+           
+
         }
     }
 }

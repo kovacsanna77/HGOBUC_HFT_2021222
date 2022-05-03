@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\HGOBUC_HFT_2021222.Logic\HGOBUC_HFT_2021222.Logic.csproj" />
     <ProjectReference Include="..\HGOBUC_HFT_2021222.Models\HGOBUC_HFT_2021222.Models.csproj" />
     <ProjectReference Include="..\HGOBUC_HFT_2021222.Repository\HGOBUC_HFT_2021222.Repository.csproj" />
   </ItemGroup>
