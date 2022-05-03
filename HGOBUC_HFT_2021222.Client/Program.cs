@@ -56,7 +56,7 @@ namespace HGOBUC_HFT_2021222.Client
 
         static void Main(string[] args)
         {
-           // rest = new RestService("http://localhost:53910/", "movie");
+            rest = new RestService("http://localhost:27826/", "movie");
 
             var actorSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Actor"))
