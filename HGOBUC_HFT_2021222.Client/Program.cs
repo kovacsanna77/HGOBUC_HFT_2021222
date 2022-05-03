@@ -12,7 +12,7 @@ namespace HGOBUC_HFT_2021222.Client
         static RestService rest;
         static void Create(string entity)
         {
-            if (entity == "Actor")
+            if (entity == "Actors")
             {
                 Console.Write("Enter Actor Name: ");
                 string name = Console.ReadLine();
@@ -21,7 +21,7 @@ namespace HGOBUC_HFT_2021222.Client
         }
         static void List(string entity)
         {
-            if (entity == "Actor")
+            if (entity == "Actors")
             {
                 List<Actors> actors = rest.Get<Actors>("actor");
                 foreach (var item in actors)
@@ -33,7 +33,7 @@ namespace HGOBUC_HFT_2021222.Client
         }
         static void Update(string entity)
         {
-            if (entity == "Actor")
+            if (entity == "Actors")
             {
                 Console.Write("Enter Actor's id to update: ");
                 int id = int.Parse(Console.ReadLine());
@@ -46,7 +46,7 @@ namespace HGOBUC_HFT_2021222.Client
         }
         static void Delete(string entity)
         {
-            if (entity == "Actor")
+            if (entity == "Actors")
             {
                 Console.Write("Enter Actor's id to delete: ");
                 int id = int.Parse(Console.ReadLine());
@@ -59,10 +59,10 @@ namespace HGOBUC_HFT_2021222.Client
             rest = new RestService("http://localhost:27826/", "movie");
 
             var actorSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Actor"))
-                .Add("Create", () => Create("Actor"))
-                .Add("Delete", () => Delete("Actor"))
-                .Add("Update", () => Update("Actor"))
+                .Add("List", () => List("Actors"))
+                .Add("Create", () => Create("Actors"))
+                .Add("Delete", () => Delete("Actors"))
+                .Add("Update", () => Update("Actors"))
                 .Add("Exit", ConsoleMenu.Close);
 
             var roleSubMenu = new ConsoleMenu(args, level: 1)
@@ -73,10 +73,10 @@ namespace HGOBUC_HFT_2021222.Client
                 .Add("Exit", ConsoleMenu.Close);
 
             var directorSubMenu = new ConsoleMenu(args, level: 1)
-                .Add("List", () => List("Director"))
-                .Add("Create", () => Create("Director"))
-                .Add("Delete", () => Delete("Director"))
-                .Add("Update", () => Update("Director"))
+                .Add("List", () => List("Network"))
+                .Add("Create", () => Create("Network"))
+                .Add("Delete", () => Delete("Network"))
+                .Add("Update", () => Update("Network"))
                 .Add("Exit", ConsoleMenu.Close);
 
             var movieSubMenu = new ConsoleMenu(args, level: 1)
