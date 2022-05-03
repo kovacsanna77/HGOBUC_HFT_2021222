@@ -160,7 +160,7 @@ namespace HGOBUC_HFT_2021222.Client
                 .Add("Update", () => Update("Role"))
                 .Add("Exit", ConsoleMenu.Close);
 
-            var directorSubMenu = new ConsoleMenu(args, level: 1)
+            var networkSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Network"))
                 .Add("Create", () => Create("Network"))
                 .Add("Delete", () => Delete("Network"))
@@ -179,7 +179,7 @@ namespace HGOBUC_HFT_2021222.Client
                 .Add("Movies", () => movieSubMenu.Show())
                 .Add("Actors", () => actorSubMenu.Show())
                 .Add("Roles", () => roleSubMenu.Show())
-                .Add("Directors", () => directorSubMenu.Show())
+                .Add("Networks", () => networkSubMenu.Show())
                 .Add("Exit", ConsoleMenu.Close);
 
             menu.Show();
