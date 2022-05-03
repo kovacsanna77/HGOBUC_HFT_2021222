@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <PackageReference Include="ConsoleMenu-simple" Version="2.4.3" />
-    <PackageReference Include="ConsoleTools" Version="1.1.1" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.8" />
   </ItemGroup>
 
