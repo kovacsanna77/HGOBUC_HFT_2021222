@@ -17,7 +17,24 @@ namespace HGOBUC_HFT_2021222.Client
                 Console.Write("Enter Actor Name: ");
                 string name = Console.ReadLine();
                 rest.Post(new Actors() { ActorName = name }, "actor");
+            }else if( entity == "Role")
+            {
+                Console.WriteLine("Enter the role: ");
+                string role = Console.ReadLine();
+
+                rest.Post(new Role() { RoleName = role }, "role");
+            }else if(entity == "Movie")
+            {
+                Console.WriteLine("Enter the title: ");
+                string title = Console.ReadLine();
+                rest.Post(new Movie() { Title = title }, "movie");
+            }else if(entity == "Network")
+            {
+                Console.WriteLine("Enter the network: ");
+                string n = Console.ReadLine();
+                rest.Post(new Network() { NetworkName = n }, "network");
             }
+
         }
         static void List(string entity)
         {
@@ -27,6 +44,30 @@ namespace HGOBUC_HFT_2021222.Client
                 foreach (var item in actors)
                 {
                     Console.WriteLine(item.ActorId + ": " + item.ActorName);
+                }
+            }
+            else if (entity == "Role")
+            {
+                List<Role> roles = rest.Get<Role>("role");
+                foreach (var item in roles)
+                {
+                    Console.WriteLine(item.RoleId + " : " + item.RoleName);
+                }
+            }
+            else if (entity == "Movie")
+            {
+                List<Movie> movies = rest.Get<Movie>("movie");
+                foreach (var item in movies)
+                {
+                    Console.WriteLine(item.Title);
+                }
+            }
+            else if (entity == "Network")
+            {
+                List<Network> networks = rest.Get<Network>("network");
+                foreach (var item in networks)
+                {
+                    Console.WriteLine(item.NetworkName);
                 }
             }
             Console.ReadLine();
@@ -42,6 +83,36 @@ namespace HGOBUC_HFT_2021222.Client
                 string name = Console.ReadLine();
                 one.ActorName = name;
                 rest.Put(one, "actor");
+            }else if(entity == "Movie")
+            {
+                Console.WriteLine("Enter the movie's id to update: ");
+                int id = int.Parse(Console.ReadLine());
+                Movie one = rest.Get<Movie>(id, "movie");
+                Console.Write($"New name [old: {one.Title}]: ");
+                string title = Console.ReadLine();
+                one.Title = title;
+                rest.Put(one, "movie");
+
+            }
+            else if(entity == "Role")
+            {
+                Console.WriteLine("Enter the role's id to update: ");
+                int id = int.Parse(Console.ReadLine());
+                Role one = rest.Get<Role>(id, "role");
+                Console.Write($"New name [old: {one.RoleName}]: ");
+                string name = Console.ReadLine();
+                one.RoleName= name;
+                rest.Put(one, "role");
+            }
+            else if(entity == "Network")
+            {
+                Console.WriteLine("Enter the network's id to update: ");
+                int id = int.Parse(Console.ReadLine());
+                Network one = rest.Get<Network>(id, "network");
+                Console.Write($"New name [old: {one.NetworkName}]: ");
+                string name = Console.ReadLine();
+                one.NetworkName = name;
+                rest.Put(one, "movie");
             }
         }
         static void Delete(string entity)
@@ -51,6 +122,23 @@ namespace HGOBUC_HFT_2021222.Client
                 Console.Write("Enter Actor's id to delete: ");
                 int id = int.Parse(Console.ReadLine());
                 rest.Delete(id, "actor");
+            }else if(entity == "Role")
+            {
+                Console.Write("Enter Role's id to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "role");
+            }
+            else if (entity == "Movie")
+            {
+                Console.Write("Enter Movie's id to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "movie");
+            }
+            else if (entity == "Network")
+            {
+                Console.Write("Enter the network's id to delete: ");
+                int id = int.Parse(Console.ReadLine());
+                rest.Delete(id, "network");
             }
         }
 
