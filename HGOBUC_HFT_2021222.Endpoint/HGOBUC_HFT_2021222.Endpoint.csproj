@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
+    <ProjectReference Include="..\HGOBUC_HFT_2021222.Logic\HGOBUC_HFT_2021222.Logic.csproj" />
   </ItemGroup>
 
 </Project>
