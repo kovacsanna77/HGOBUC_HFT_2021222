@@ -87,7 +87,7 @@ namespace HGOBUC_HFT_2021222.Repository
 
             modelBuilder.Entity<Role>().HasData(new Role[]
             {
-                new Role("1#1#1#1#Vincenzo Casano"),
+                new Role("1#1#1#1#Vincenzo Cassano"),
                 new Role("2#1#2#3#Jun Woo"),
                 new Role("3#1#6#2#Hong Cha Young"),
                 new Role("4#3#3#1#Yoon Ji Woo"),
