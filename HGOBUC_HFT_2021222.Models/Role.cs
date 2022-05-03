@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Text.Json.Serialization;
 
 namespace HGOBUC_HFT_2021222.Models
 {
@@ -12,14 +8,16 @@ namespace HGOBUC_HFT_2021222.Models
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int RoleId { get; set;}
+        public int RoleId { get; set; }
         public int Priority { get; set; }
         public string RoleName { get; set; }
         public int MovieId { get; set; }
         public int ActorId { get; set; }
+
+        [JsonIgnore]
         public virtual Actors Actor { get; private set; }
 
-   
+        [JsonIgnore]
         public virtual Movie Movie { get; private set; }
         public Role()
         {
