@@ -14,5 +14,6 @@ namespace HGOBUC_HFT_2021222.Logic.Interfaces
         void Update(Movie item);
         void Delete(int id);
         IQueryable<Movie> ReadAll();
+        IEnumerable<string> MostMovies();
     }
 }

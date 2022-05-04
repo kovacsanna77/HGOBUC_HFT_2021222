@@ -13,10 +13,15 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
     public class MovieLogic : IMovieLogic
     {
         IRepository<Movie> repo;
+        IRepository<Actors> actorRepo;
 
-        public MovieLogic(IRepository<Movie> repo)
+        
+
+        public MovieLogic(IRepository<Movie> repo, IRepository<Actors> actorRepo)
         {
             this.repo = repo;
+            this.actorRepo = actorRepo;
+            
         }
 
         public void Create(Movie item)
@@ -51,15 +56,12 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
         }
 
         //5 NON CRUD
-
-
-        //Avarage dramas by network
-        public IEnumerable<int> AvgMovieByNetwork(string NetworkName)
+        
+        /*public IEnumerable<string> MostMovies()
         {
-            return this.repo.ReadAll().Where(x => x.Network.NetworkName == NetworkName).Select(x => x.Network.Movies.Count);
-            
+            return 
         }
-        //Avarage episodes by actor
+               */   
 
     }
 
