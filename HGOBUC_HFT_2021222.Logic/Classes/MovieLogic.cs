@@ -57,11 +57,13 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
 
         //5 NON CRUD
         
-        /*public IEnumerable<string> MostMovies()
+      public IEnumerable<string> MostMovies()
         {
-            return 
+            return from x in repo.ReadAll()
+                   where x.Episodes > 16
+                   select x.Title;
         }
-               */   
+                
 
     }
 
