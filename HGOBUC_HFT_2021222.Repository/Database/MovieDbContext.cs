@@ -58,10 +58,16 @@ namespace HGOBUC_HFT_2021222.Repository
 
             modelBuilder.Entity<Movie>().HasData(new Movie[]
              {
-                   new Movie("1#Vincenzo#2020#20#90#1"),   
-                   new Movie("2#Itaewon Class#2020#16#70#2"),
-                   new Movie("3#My name#2021#8#50#6"),
-                   new Movie("4#Military Prosecutor Doberman#2022#16#60#1")
+                   new Movie("1#Vincenzo#2020#20#90#1#10"),   
+                   new Movie("2#Itaewon Class#2020#16#70#2#9"),
+                   new Movie("3#My name#2021#8#50#6#8"),
+                   new Movie("4#Military Prosecutor Doberman#2022#16#60#1#9"),
+                   new Movie("5#Arthdal Chronicles#2019#18#80#1#8"),
+                   new Movie("6#My Liberation Notes#2022#16#60#6#10"),
+                   new Movie("7#Just Between Lovers#2017#16#75#2#9"),
+                   new Movie("8#Red Cuff of the Sleeve#2021#17#80#5#9"),
+                   new Movie("9#After the Rain#2018#2#65#3#7"),
+                   
              });
 
             modelBuilder.Entity<Actors>().HasData(new Actors[]
@@ -71,7 +77,10 @@ namespace HGOBUC_HFT_2021222.Repository
                 new Actors("3#Han So Hee"),
                 new Actors("4#Ahn Bo Hyun"),
                 new Actors("5#Park Seo Joon"),
-                new Actors("6#Jeon Yeo Bin")
+                new Actors("6#Jeon Yeo Bin"),
+                new Actors("7#Kim Ji Won"),
+                new Actors("8#Lee Jon Ho"),
+                new Actors("9#Woon Jin Ah")
             });
 
 
@@ -93,7 +102,14 @@ namespace HGOBUC_HFT_2021222.Repository
                 new Role("4#3#3#1#Yoon Ji Woo"),
                 new Role("5#3#4#2#Jeon Pil Do"),
                 new Role("6#2#5#1#Park Sae Roy"),
-                new Role("7#4#4#1#Do Bae Man")
+                new Role("7#4#4#1#Do Bae Man"),
+                new Role("8#5#1#1#Eun Som/Sa Ya"),
+                new Role("9#5#7#3#Tan Ya"),
+                new Role("10#6#7#1#Yeom Mi Jung"),
+                new Role("11#7#8#1#Lee Gang Doo"),
+                new Role("12#7#9#1#Han Moon Soo"),
+                new Role("13#8#8#1#Yi San/King Jung Jo"),
+                new Role("14#9#3#4#Soo Jin")
 
 
             });

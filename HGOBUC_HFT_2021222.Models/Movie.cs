@@ -20,6 +20,7 @@ namespace HGOBUC_HFT_2021222.Models
         public int Episodes { get; set; }
         public int Duration { get; set; }
         public int NetworkId { get; set; }
+        public int Rating { get; set; }
         public virtual Network Network { get; set; }
         public virtual ICollection<Actors> Actors { get; set; }
         public virtual ICollection<Role> Roles { get; set; }
@@ -38,6 +39,7 @@ namespace HGOBUC_HFT_2021222.Models
             Episodes = int.Parse(split[3]);
             Duration = int.Parse(split[4]);
             NetworkId = int.Parse(split[5]);
+            Rating = int.Parse(split[6]);
         }
 
     }

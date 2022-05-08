@@ -17,6 +17,7 @@ namespace HGOBUC_HFT_2021222.Client
                 Console.Write("Enter Actor Name: ");
                 string name = Console.ReadLine();
                 rest.Post(new Actors() { ActorName = name }, "actor");
+                
             }else if( entity == "Role")
             {
                 Console.WriteLine("Enter the role: ");
