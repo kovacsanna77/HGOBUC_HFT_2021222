@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static HGOBUC_HFT_2021222.Logic.Classes.MovieLogic;
 
 namespace HGOBUC_HFT_2021222.Logic.Interfaces
 {
@@ -14,6 +15,7 @@ namespace HGOBUC_HFT_2021222.Logic.Interfaces
         void Update(Movie item);
         void Delete(int id);
         IQueryable<Movie> ReadAll();
-        IEnumerable<string> MostMovies();
+        IEnumerable<AvgEpByNetwork> AvgEpisodesPerYear();
+        IEnumerable<Actors> MostMovies();
     }
 }

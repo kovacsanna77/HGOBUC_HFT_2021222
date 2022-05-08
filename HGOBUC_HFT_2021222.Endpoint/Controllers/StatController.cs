@@ -1,9 +1,11 @@
 ﻿using HGOBUC_HFT_2021222.Logic.Interfaces;
+using HGOBUC_HFT_2021222.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static HGOBUC_HFT_2021222.Logic.Classes.MovieLogic;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -21,7 +23,11 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<string> MostMovies()
+        public IEnumerable<AvgEpByNetwork> AvgEpisodesPerYear()
+        {
+            return this.logic.AvgEpisodesPerYear();
+        }
+        public IEnumerable<Actors> MostMovies()
         {
             return this.logic.MostMovies();
         }
