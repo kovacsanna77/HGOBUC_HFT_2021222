@@ -13,6 +13,6 @@ namespace HGOBUC_HFT_2021222.Logic.Interfaces
         Actors Read(int id);
         void Update(Actors item);
         void Delete(int id);
-        IQueryable<Actors> ReadAll();
+        IEnumerable<Actors> ReadAll();
     }
 }

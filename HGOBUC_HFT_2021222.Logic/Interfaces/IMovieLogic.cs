@@ -14,8 +14,8 @@ namespace HGOBUC_HFT_2021222.Logic.Interfaces
         Movie Read(int id);
         void Update(Movie item);
         void Delete(int id);
-        IQueryable<Movie> ReadAll();
-        IEnumerable<AvgEpByNetwork> AvgEpisodesPerYear();
-        IEnumerable<Actors> MostMovies();
+        IEnumerable<Movie> ReadAll();
+        IEnumerable<AvgEpByNetwork> AvgEpisodesPerNetwork();
+        //IEnumerable<KeyValuePair<string, double>> MostMovies();
     }
 }

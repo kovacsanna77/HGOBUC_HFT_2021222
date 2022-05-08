@@ -27,7 +27,7 @@ namespace HGOBUC_HFT_2021222.Repository
         }
 
 
-        public IQueryable<T> ReadAll()
+        public IEnumerable<T> ReadAll()
         {
             return ctx.Set<T>();
         }

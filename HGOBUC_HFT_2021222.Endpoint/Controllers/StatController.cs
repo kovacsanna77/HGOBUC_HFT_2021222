@@ -25,11 +25,12 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         [HttpGet]
         public IEnumerable<AvgEpByNetwork> AvgEpisodesPerYear()
         {
-            return this.logic.AvgEpisodesPerYear();
+            return this.logic.AvgEpisodesPerNetwork();
         }
-        public IEnumerable<Actors> MostMovies()
+        //[HttpGet]
+      /*  public IEnumerable<KeyValuePair<string, double>> MostMovies()
         {
             return this.logic.MostMovies();
-        }
+        }*/
     }
 }

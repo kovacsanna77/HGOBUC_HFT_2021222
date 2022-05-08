@@ -13,7 +13,7 @@ namespace HGOBUC_HFT_2021222.Logic.Interfaces
         Role Read(int id);
         void Update(Role item);
         void Delete(int id);
-        IQueryable<Role> ReadAll();
+        IEnumerable<Role> ReadAll();
 
     }
 }

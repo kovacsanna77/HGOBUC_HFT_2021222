@@ -49,7 +49,7 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
             return movie;
         }
 
-        public IQueryable<Movie> ReadAll()
+        public IEnumerable<Movie> ReadAll()
         {
             return this.repo.ReadAll();
 
@@ -62,10 +62,10 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
 
         //5 NON CRUD
        
-        public IEnumerable<AvgEpByNetwork> AvgEpisodesPerYear()
+        public IEnumerable<AvgEpByNetwork> AvgEpisodesPerNetwork()
         {
-            var q1 = from m in repo.ReadAll().ToList()
-                     join n in networkRepo.ReadAll().ToList() on m.NetworkId equals n.NetworkId
+            var q1 = from m in repo.ReadAll()
+                     join n in networkRepo.ReadAll() on m.NetworkId equals n.NetworkId
                      group new { m, n } by n.NetworkName into g
                      select new AvgEpByNetwork
                      {
@@ -79,24 +79,15 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
         }
 
        //Actor with most movies
-        public  IEnumerable<Actors> MostMovies()
+     /*  public  IEnumerable<KeyValuePair<string, double>> MostMovies()
         {
-            var q2 = from x in repo.ReadAll().ToList()
-                     from a in actorRepo.ReadAll().ToList()
-                     where x.Actors.Contains(a)
-                     group a by a into g
-                     select new Actors
-                     {
-                         ActorId = g.Key.ActorId,
-                         ActorName = g.Key.ActorName,
-                         Movies = g.Key.Movies,
-                         Roles = g.Key.Roles
-                     };
-                
+            var q2 = from m in repo.ReadAll()
+                     join r in roleRepo.ReadAll() 
+                   
 
 
                 return q2;
-        }
+        }*/
 
 
         public class AvgEpByNetwork

@@ -10,7 +10,7 @@ namespace HGOBUC_HFT_2021222.Models
 {
     public class Movie
     {
-        private Network network;
+        
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

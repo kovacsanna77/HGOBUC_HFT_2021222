@@ -31,7 +31,7 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
             return this.repo.Read(id);
         }
 
-        public IQueryable<Role> ReadAll()
+        public IEnumerable<Role> ReadAll()
         {
             return this.repo.ReadAll();
         }

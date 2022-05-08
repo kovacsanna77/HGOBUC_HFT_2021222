@@ -32,7 +32,7 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
             
         }
 
-        public IQueryable<Network> ReadAll()
+        public IEnumerable<Network> ReadAll()
         {
             return this.repo.ReadAll();
         }
