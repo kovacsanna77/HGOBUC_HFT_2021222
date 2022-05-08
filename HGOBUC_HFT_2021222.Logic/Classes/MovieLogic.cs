@@ -71,7 +71,6 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
                      {
                         networkName = g.Key,
                         avgEpPerMovie = g.Average(x => x.m.Episodes)
-                        
                      };
 
             return q1;
