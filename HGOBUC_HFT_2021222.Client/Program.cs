@@ -164,13 +164,46 @@ namespace HGOBUC_HFT_2021222.Client
 
         static void AvgEpisodesPerNetwork()
         {
-           
+            var stat1 = rest.Get<KeyValuePair<string, double?>>("stat/AvgEpisodesPerNetwork");
+            foreach (var item in stat1)
+            {
+                Console.WriteLine(item.Key + ": " + item.Value);
+            }
+            Console.ReadKey();
         }
 
+        static void MoviesWith10RatingWithMainActor()
+        {
+            var stat2 = rest.Get<KeyValuePair<string, string>>("stat/MoviesWith10Rating");
+            foreach (var item in stat2)
+            {
+                Console.WriteLine(item.Key + " -- " + item.Value);
+            }
+            Console.ReadKey();
+        }
+        static void AvgMovieRateByNetwork()
+        {
+            var stat2 = rest.Get<KeyValuePair<string, double>>("stat/AvgMovieRateByNetwork");
+            foreach (var item in stat2)
+            {
+                Console.WriteLine(item.Key + " -- " + item.Value);
+            }
+            Console.ReadKey();
+        }
+        static void ActorWith5RatedMovie()
+        {
+            var stat2 = rest.Get<KeyValuePair<string, string>>("stat/ActorWith5RatedMovie");
+            foreach (var item in stat2)
+            {
+                Console.WriteLine(item.Key + " -- " + item.Value);
+            }
+            Console.ReadKey();
+        }
         static void Main(string[] args)
         {
             rest = new RestService("http://localhost:27826/", "movie");
 
+            
             
             var actorSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Actors"))
@@ -198,7 +231,10 @@ namespace HGOBUC_HFT_2021222.Client
                 .Add("Create", () => Create("Movie"))
                 .Add("Delete", () => Delete("Movie"))
                 .Add("Update", () => Update("Movie"))
-           
+                .Add("Average Episodes in a Movie By Network", () => AvgEpisodesPerNetwork())
+                .Add("10 rated MoviesWith main Actor", () => MoviesWith10RatingWithMainActor())
+                .Add("Average rating by network", () => AvgMovieRateByNetwork())
+                .Add("Acotr's movie rated 5", () => ActorWith5RatedMovie())
                 .Add("Exit", ConsoleMenu.Close);
 
 

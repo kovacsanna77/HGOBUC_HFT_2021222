@@ -17,8 +17,10 @@ namespace HGOBUC_HFT_2021222.Models
         public string ActorName { get; set; }
 
         [JsonIgnore]
+        [NotMapped]
         public virtual ICollection<Movie> Movies { get; set; }
         [JsonIgnore]
+        [NotMapped]
         public virtual ICollection<Role> Roles { get; set; }
         public Actors()
         {

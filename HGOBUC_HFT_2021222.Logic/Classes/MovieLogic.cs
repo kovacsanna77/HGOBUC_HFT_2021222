@@ -82,10 +82,10 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
       public IEnumerable<KeyValuePair<string, string>> MoviesWith10RatingWithMainActor()
         {
             var q2 = from x in repo.ReadAll()
-                     from r in roleRepo.ReadAll()
+                     join r in roleRepo.ReadAll() on x.MovieId equals r.RoleId
                      join a in actorRepo.ReadAll() on r.ActorId equals a.ActorId
-
-                     where x.Rating == 10 && r.Priority == 1
+                     where x.Rating == 10
+                     where r.Priority==1
                      select new KeyValuePair<string, string>(x.Title, a.ActorName);
  
            return q2;

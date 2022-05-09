@@ -17,6 +17,7 @@ namespace HGOBUC_HFT_2021222.Models
         public string NetworkName { get;   set; }
 
         [JsonIgnore]
+        [NotMapped]
         public virtual ICollection<Movie> Movies{ get; set; }
 
         public Network()

@@ -23,9 +23,9 @@ namespace HGOBUC_HFT_2021222.Models
         [Range(0, 10)]
         public int Rating { get; set; }
         public virtual Network Network { get; set; }
-        
+        [NotMapped]
         public virtual ICollection<Actors> Actors { get; set; }
-       
+        [NotMapped]
         public virtual ICollection<Role> Roles { get; set; }
 
         public Movie()
