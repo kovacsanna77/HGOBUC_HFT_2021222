@@ -111,7 +111,6 @@ namespace HGOBUC_HFT_2021222.Repository
                 new Role("13#8#8#1#Yi San/King Jung Jo"),
                 new Role("14#9#3#4#Soo Jin")
 
-
             });
 
         }

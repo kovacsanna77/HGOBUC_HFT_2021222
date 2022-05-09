@@ -61,7 +61,7 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
         }
 
         //5 NON CRUD
-       
+        //Average episode on movies released by each network
         public IEnumerable<AvgEpByNetwork> AvgEpisodesPerNetwork()
         {
             var q1 = from m in repo.ReadAll()
