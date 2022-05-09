@@ -62,7 +62,7 @@ namespace HGOBUC_HFT_2021222.Client
                 List<Actors> actors = rest.Get<Actors>("actor");
                 foreach (var item in actors)
                 {
-                    Console.WriteLine(item.ActorId + ": " + item.ActorName);
+                    Console.WriteLine(item.ActorId + ". " + item.ActorName);
                 }
             }
             else if (entity == "Role")
@@ -70,7 +70,7 @@ namespace HGOBUC_HFT_2021222.Client
                 List<Role> roles = rest.Get<Role>("role");
                 foreach (var item in roles)
                 {
-                    Console.WriteLine(item.RoleId + " : " + item.RoleName);
+                    Console.WriteLine(item.RoleId + ": " + item.RoleName);
                 }
             }
             else if (entity == "Movie")
@@ -78,7 +78,7 @@ namespace HGOBUC_HFT_2021222.Client
                 List<Movie> movies = rest.Get<Movie>("movie");
                 foreach (var item in movies)
                 {
-                    Console.WriteLine(item.Title);
+                    Console.WriteLine( item.MovieId+". "+ item.Title);
                 }
             }
             else if (entity == "Network")
@@ -86,7 +86,7 @@ namespace HGOBUC_HFT_2021222.Client
                 List<Network> networks = rest.Get<Network>("network");
                 foreach (var item in networks)
                 {
-                    Console.WriteLine(item.NetworkName);
+                    Console.WriteLine(item.NetworkId + ". " + item.NetworkName);
                 }
             }
             Console.ReadLine();
