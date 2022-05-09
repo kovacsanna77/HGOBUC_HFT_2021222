@@ -33,6 +33,14 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
             return this.logic.AvgMovieRateByNetwork();
         }
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, string>> MoviesWith10Rating(){ return this.logic.MoviesWith10RatingWithMainActor(); }
+        public IEnumerable<KeyValuePair<string, string>> MoviesWith10Rating()
+        { 
+            return this.logic.MoviesWith10RatingWithMainActor(); 
+        }
+        [HttpGet]
+        public IEnumerable<KeyValuePair<string, double>> AvgDurationOfMoviesByActor()
+        {
+            return this.logic.AvgMoviesByActor();
+        }
     }
 }

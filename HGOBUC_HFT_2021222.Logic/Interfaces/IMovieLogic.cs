@@ -13,5 +13,6 @@ namespace HGOBUC_HFT_2021222.Logic.Interfaces
         IEnumerable<KeyValuePair<string, double>> AvgEpisodesPerNetwork();
         IEnumerable<KeyValuePair<string, double>> AvgMovieRateByNetwork();
         IEnumerable<KeyValuePair<string, string>> MoviesWith10RatingWithMainActor();
+        IEnumerable<KeyValuePair<string, double>> AvgMoviesByActor();
     }
 }

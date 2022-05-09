@@ -87,7 +87,7 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
  
            return q2;
         }
-       // avarage movie rate by network
+       // A csatorna filmejeinek átalgos értékelése
        public IEnumerable<KeyValuePair<string, double>> AvgMovieRateByNetwork()
         {
             var q3 = from x in repo.ReadAll()
@@ -97,34 +97,22 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
             return q3;
         }
 
-       //average duration of movies by network
-       //average duration by actors
-
-        /*public class AvgEpByNetwork
+       //A színész által játszott filmek  
+        public IEnumerable<KeyValuePair<string, double>> AvgMoviesByActor()
         {
-            public string networkName { get; set; }
-            public  double? avgEpPerMovie{ get; set; }
+            
 
-            public override bool Equals(object obj)
-            {
-                AvgEpByNetwork b = obj as AvgEpByNetwork;
-                if (b == null)
-                {
-                    return false;
-                }
-                else
-                {
-                    return this.networkName == b.networkName
-                        && this.avgEpPerMovie == b.avgEpPerMovie;
-                        
-                }
-            }
+            var q4 = from x in repo.ReadAll()
+                      join r in roleRepo.ReadAll() on x.MovieId equals r.MovieId
+                      group x by x.MovieId into g
+                      select new KeyValuePair<string, double>(roleRepo.Read(g.Key).Actor.ActorName, g.Count(t => t.MovieId == g.Key));
+            return q4;
+        }
 
-            public override int GetHashCode()
-            {
-                return HashCode.Combine(this.networkName, this.avgEpPerMovie);
-            }
-        }*/
+        //5
+
+       
+        
        
 
     }

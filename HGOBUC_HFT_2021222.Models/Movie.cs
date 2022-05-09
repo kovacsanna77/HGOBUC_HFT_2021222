@@ -20,6 +20,7 @@ namespace HGOBUC_HFT_2021222.Models
         public int Episodes { get; set; }
         public int Duration { get; set; }
         public int NetworkId { get; set; }
+
         [Range(0, 10)]
         public int Rating { get; set; }
         public virtual Network Network { get; set; }

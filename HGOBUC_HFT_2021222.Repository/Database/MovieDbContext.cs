@@ -60,12 +60,12 @@ namespace HGOBUC_HFT_2021222.Repository
                    new Movie("1#Vincenzo#2020#20#90#1#10"),   
                    new Movie("2#Itaewon Class#2020#16#70#2#9"),
                    new Movie("3#My name#2021#8#50#6#8"),
-                   new Movie("4#Military Prosecutor Doberman#2022#16#60#1#9"),
+                   new Movie("4#Military Prosecutor Doberman#2022#16#60#1#7"),
                    new Movie("5#Arthdal Chronicles#2019#18#80#1#8"),
                    new Movie("6#My Liberation Notes#2022#16#60#6#10"),
                    new Movie("7#Just Between Lovers#2017#16#75#2#9"),
-                   new Movie("8#Red Cuff of the Sleeve#2021#17#80#5#9"),
-                   new Movie("9#After the Rain#2018#2#65#3#7"),
+                   new Movie("8#Red Cuff of the Sleeve#2021#17#80#5#5"),
+                   new Movie("9#After the Rain#2018#2#65#3#6"),
                    
             });
 
