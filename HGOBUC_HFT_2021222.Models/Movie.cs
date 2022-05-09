@@ -14,7 +14,7 @@ namespace HGOBUC_HFT_2021222.Models
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MovieId { get; set; }
         [Required]
-        [MinLength(3)]
+        
         public string Title { get; set; }
         public int Aired { get; set; }
         public int Episodes { get; set; }

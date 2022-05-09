@@ -65,38 +65,66 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
 
         //5 NON CRUD
         //Average episode on movies released by each network
-        public IEnumerable<AvgEpByNetwork> AvgEpisodesPerNetwork()
+        public IEnumerable<KeyValuePair<string, double>> AvgEpisodesPerNetwork()
         {
-            var q1 = from m in repo.ReadAll()
-                     join n in networkRepo.ReadAll() on m.NetworkId equals n.NetworkId
-                     group new { m, n } by n.NetworkName into g
-                     select new AvgEpByNetwork
-                     {
-                        networkName = g.Key,
-                        avgEpPerMovie = g.Average(x => x.m.Episodes)
-                     };
+
+            var q1 = from x in repo.ReadAll()
+                     group x by x.NetworkId into g
+                     select new KeyValuePair<string, double>(networkRepo.Read(g.Key).NetworkName, g.Average(t => t.Episodes));
 
             return q1;
-
         }
 
-       //Actor with most movies
-     /*  public  IEnumerable<KeyValuePair<string, double>> MostMovies()
+        //Filmek 10 feletti értékeléssel és ezek főszereplői
+
+      public IEnumerable<KeyValuePair<string, string>> MoviesWith10RatingWithMainActor()
         {
-            var q2 = from m in repo.ReadAll()
-                     join r in roleRepo.ReadAll() 
-                   
+            var q2 = from x in repo.ReadAll()
+                     from r in roleRepo.ReadAll()
+                     join a in actorRepo.ReadAll() on r.ActorId equals a.ActorId
+                     where x.Rating == 10 && r.Priority == 1
+                     select new KeyValuePair<string, string>(x.Title, a.ActorName);
+ 
+           return q2;
+        }
+       // avarage movie rate by network
+       public IEnumerable<KeyValuePair<string, double>> AvgMovieRateByNetwork()
+        {
+            var q3 = from x in repo.ReadAll()
+                     group x by x.NetworkId into g
+                     select new KeyValuePair<string, double>(networkRepo.Read(g.Key).NetworkName, g.Average(t => t.Rating));
 
+            return q3;
+        }
 
-                return q2;
-        }*/
+       //average duration of movies by network
+       //average duration by actors
 
-
-        public class AvgEpByNetwork
+        /*public class AvgEpByNetwork
         {
             public string networkName { get; set; }
-            public double avgEpPerMovie{ get; set; }
-        }
+            public  double? avgEpPerMovie{ get; set; }
+
+            public override bool Equals(object obj)
+            {
+                AvgEpByNetwork b = obj as AvgEpByNetwork;
+                if (b == null)
+                {
+                    return false;
+                }
+                else
+                {
+                    return this.networkName == b.networkName
+                        && this.avgEpPerMovie == b.avgEpPerMovie;
+                        
+                }
+            }
+
+            public override int GetHashCode()
+            {
+                return HashCode.Combine(this.networkName, this.avgEpPerMovie);
+            }
+        }*/
        
 
     }

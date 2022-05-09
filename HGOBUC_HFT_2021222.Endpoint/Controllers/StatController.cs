@@ -23,14 +23,16 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<AvgEpByNetwork> AvgEpisodesPerYear()
+        public IEnumerable<KeyValuePair<string, double>> AvgEpisodesPerNetwork()
         {
             return this.logic.AvgEpisodesPerNetwork();
         }
-        //[HttpGet]
-      /*  public IEnumerable<KeyValuePair<string, double>> MostMovies()
+        [HttpGet]
+        public IEnumerable<KeyValuePair<string, double>> AvgMovieRateByNetwork()
         {
-            return this.logic.MostMovies();
-        }*/
+            return this.logic.AvgMovieRateByNetwork();
+        }
+        [HttpGet]
+        public IEnumerable<KeyValuePair<string, string>> MoviesWith10Rating(){ return this.logic.MoviesWith10RatingWithMainActor(); }
     }
 }
