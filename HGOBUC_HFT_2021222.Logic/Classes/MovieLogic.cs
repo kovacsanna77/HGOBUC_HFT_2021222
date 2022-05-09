@@ -17,7 +17,10 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
         IRepository<Role> roleRepo;
         IRepository<Network> networkRepo;
 
-
+        public MovieLogic(IRepository<Movie> repo)
+        {
+            this.repo = repo;
+        }
 
         public MovieLogic(IRepository<Movie> repo, IRepository<Actors> actorRepo, IRepository<Role> roleRepo,
         IRepository<Network> networkRepo)

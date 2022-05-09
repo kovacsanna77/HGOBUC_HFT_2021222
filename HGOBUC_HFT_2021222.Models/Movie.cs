@@ -13,11 +13,14 @@ namespace HGOBUC_HFT_2021222.Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MovieId { get; set; }
+        [Required]
+        [MinLength(3)]
         public string Title { get; set; }
         public int Aired { get; set; }
         public int Episodes { get; set; }
         public int Duration { get; set; }
         public int NetworkId { get; set; }
+        [Range(0, 10)]
         public int Rating { get; set; }
         public virtual Network Network { get; set; }
         public virtual ICollection<Actors> Actors { get; set; }
