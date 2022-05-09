@@ -15,10 +15,10 @@ namespace HGOBUC_HFT_2021222.Models
         public int ActorId { get; set; }
 
 
-        public virtual Actors Actor { get; private set; }
+        public virtual Actors Actor { get;  set; }
 
         [JsonIgnore]
-        public virtual Movie Movie { get; private set; }
+        public virtual Movie Movie { get;  set; }
         public Role()
         {
 

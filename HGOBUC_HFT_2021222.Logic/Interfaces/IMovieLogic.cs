@@ -10,9 +10,9 @@ namespace HGOBUC_HFT_2021222.Logic.Interfaces
         void Update(Movie item);
         void Delete(int id);
         IEnumerable<Movie> ReadAll();
-        IEnumerable<KeyValuePair<string, double>> AvgEpisodesPerNetwork();
+        IEnumerable<KeyValuePair<string, double?>> AvgEpisodesPerNetwork();
         IEnumerable<KeyValuePair<string, double>> AvgMovieRateByNetwork();
         IEnumerable<KeyValuePair<string, string>> MoviesWith10RatingWithMainActor();
-        IEnumerable<KeyValuePair<string, double>> AvgMoviesByActor();
+        IEnumerable<KeyValuePair<string, string>> ActorWith5RatedMovie();
     }
 }

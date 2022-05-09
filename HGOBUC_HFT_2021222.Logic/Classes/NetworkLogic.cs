@@ -18,6 +18,11 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
         }
         public void Create(Network item)
         {
+            if(item.NetworkName == string.Empty)
+            {
+                throw new ArgumentException("Cannot be an empty string.");
+
+            }
             this.repo.Create(item);
         }
 

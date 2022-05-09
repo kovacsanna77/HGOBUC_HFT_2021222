@@ -23,7 +23,7 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         }
 
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, double>> AvgEpisodesPerNetwork()
+        public IEnumerable<KeyValuePair<string, double?>> AvgEpisodesPerNetwork()
         {
             return this.logic.AvgEpisodesPerNetwork();
         }
@@ -38,9 +38,9 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
             return this.logic.MoviesWith10RatingWithMainActor(); 
         }
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, double>> AvgDurationOfMoviesByActor()
+        public IEnumerable<KeyValuePair<string, string>> ActorWith5RatedMovie()
         {
-            return this.logic.AvgMoviesByActor();
+            return this.logic.ActorWith5RatedMovie();
         }
     }
 }

@@ -162,10 +162,16 @@ namespace HGOBUC_HFT_2021222.Client
             }
         }
 
+        static void AvgEpisodesPerNetwork()
+        {
+           
+        }
+
         static void Main(string[] args)
         {
             rest = new RestService("http://localhost:27826/", "movie");
 
+            
             var actorSubMenu = new ConsoleMenu(args, level: 1)
                 .Add("List", () => List("Actors"))
                 .Add("Create", () => Create("Actors"))
@@ -192,6 +198,7 @@ namespace HGOBUC_HFT_2021222.Client
                 .Add("Create", () => Create("Movie"))
                 .Add("Delete", () => Delete("Movie"))
                 .Add("Update", () => Update("Movie"))
+           
                 .Add("Exit", ConsoleMenu.Close);
 
 

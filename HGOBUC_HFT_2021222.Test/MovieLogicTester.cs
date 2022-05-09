@@ -14,61 +14,119 @@ namespace HGOBUC_HFT_2021222.Test
     {
         MovieLogic logic;
         NetworkLogic networkLogic;
+        ActorLogic actorLogic;
+        RoleLogic roleLogic;
+
         Mock<IRepository<Movie>> mockMovieRepo;
         Mock<IRepository<Network>> mockNetworkRepo;
+        Mock<IRepository<Role>> mockRoleRepo;
+        Mock<IRepository<Actors>> mockActorRepo;
 
         [SetUp]
         public void Init()
         {
             mockMovieRepo = new Mock<IRepository<Movie>>();
-            mockMovieRepo.Setup(m => m.ReadAll()).Returns(new List<Movie>()
-            {
-                new Movie("1#MovieA#2000#16#60#1#5"),
-                new Movie("2#MovieB#2001#18#70#2#6"),
-                new Movie("3#MovieC#2002#10#80#3#7"),
-                new Movie("4#MovieD#2003#12#85#4#8"),
-                new Movie("5#MovieE#2004#8#60#5#10"),
-                new Movie("6#MovieF#2005#12#85#6#9"),
-            }.AsQueryable());
             mockNetworkRepo = new Mock<IRepository<Network>>();
-            mockNetworkRepo.Setup(n => n.ReadAll()).Returns(new List<Network>()
-            { new Network("1#NetworkA")}.AsQueryable());
-            logic = new MovieLogic(mockMovieRepo.Object);
-            networkLogic = new NetworkLogic(mockNetworkRepo.Object);
-        }
+            mockActorRepo = new Mock<IRepository<Actors>>();
+            mockRoleRepo = new Mock<IRepository<Role>>();
 
-       /* [Test]
-        public void AvgEpisodesPerNetworkTest()
-        {
-            var actual = logic.AvgEpisodesPerNetwork().ToList();
-            var expected = new List<KeyValuePair<string, double>>
+            var role = new List<Role>()
             {
-                new KeyValuePair<string, double>("tvn, 18"),
-               /* new AvgEpByNetwork()
-                {
-                    networkName = "jTBC",
-                    avgEpPerMovie = 16
-                },
-
-                new AvgEpByNetwork()
-                {
-                    networkName = "Netflix",
-                    avgEpPerMovie = 12
-                },
-
-                new AvgEpByNetwork()
-                {
-                    networkName = "MBC",
-                   avgEpPerMovie = 17
-                },
-                new AvgEpByNetwork()
-                {
-                    networkName = "KBS",
-                   avgEpPerMovie = 2
-                }
+               
+                
+            }.AsQueryable();
+            var actor = new List<Actors>()
+            {
+               
+                
+            }.AsQueryable();
+            var movie = new List<Movie>()
+            {
+              
+                
             }.AsQueryable();
 
-            Assert.AreEqual(expected, actual)}*/
-        
+            var network = new List<Network>()
+            {
+               
+                
+            }.AsQueryable();
+
+            mockMovieRepo.Setup(m => m.ReadAll()).Returns(movie); 
+            mockNetworkRepo.Setup(n => n.ReadAll()).Returns(network);
+            mockActorRepo.Setup(a => a.ReadAll()).Returns(actor);
+            mockRoleRepo.Setup(r => r.ReadAll()).Returns(role);
+
+            logic = new MovieLogic(mockMovieRepo.Object);
+            networkLogic = new NetworkLogic(mockNetworkRepo.Object);
+            actorLogic = new ActorLogic(mockActorRepo.Object);
+            roleLogic = new RoleLogic(mockRoleRepo.Object);
+        }
+
+        [Test]
+        public void AvgMovieRateByNetwork()
+        {
+            var actual = logic.AvgMovieRateByNetwork().ToList();
+            
+
+            Assert.AreEqual(actual[1], new KeyValuePair<string, double>("jTBC", 9));
+        }
+        [Test]
+        public void AvgEpisodesPerNetworkTest()
+        {
+            var actual = logic.AvgEpisodesPerNetwork().ToArray();
+
+            var expected =
+                 new KeyValuePair<string, double?>("jTBC", 16);
+
+            Assert.That(actual[1], Is.EqualTo(expected));
+         }
+
+        [Test]
+        public void CreateMovieTestWrongTitle()
+        {
+            var m = new Movie() { Title = "aa" };
+            try
+            {
+                logic.Create(m);
+            }
+            catch { }
+            mockMovieRepo.Verify(x => x.Create(m), Times.Never);
+        }
+        [Test]
+        public void CreateMovieTest()
+        {
+            var m = new Movie() { Title = "NewMovie" };
+            try
+            {
+                logic.Create(m);
+            }
+            catch { }
+            mockMovieRepo.Verify(x => x.Create(m), Times.Once);
+        }
+        [Test]
+        public void ActorCreateTest()
+        {
+            var a = new Actors() { ActorName = "NewActor" };
+            try { actorLogic.Create(a); }
+            catch { }
+            
+            mockActorRepo.Verify(r => r.Create(a), Times.Once);
+        }
+        [Test]
+        public void NetwokrCreateTest()
+        {
+            var n = new Network() { NetworkName = "" };
+            try { networkLogic.Create(n); }
+            catch { }
+
+            mockNetworkRepo.Verify(r => r.Create(n), Times.Never); 
+        }
+        [Test]
+        public void DeleteRoleTest()
+        {
+            try { roleLogic.Delete(3); } catch { }
+            mockRoleRepo.Verify(r => r.Delete(3), Times.Once);
+        }
     }
 }

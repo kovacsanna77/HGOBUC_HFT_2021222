@@ -57,6 +57,7 @@ namespace HGOBUC_HFT_2021222.Repository
 
             modelBuilder.Entity<Movie>().HasData(new Movie[]
             {
+                //ID#Title#Aired#Episodes#Duration#Networkid#Rating
                    new Movie("1#Vincenzo#2020#20#90#1#10"),   
                    new Movie("2#Itaewon Class#2020#16#70#2#9"),
                    new Movie("3#My name#2021#8#50#6#8"),
@@ -94,6 +95,7 @@ namespace HGOBUC_HFT_2021222.Repository
 
             modelBuilder.Entity<Role>().HasData(new Role[]
             {
+                //RoleID#MovieID#ActorId#priority#name
                 new Role("1#1#1#1#Vincenzo Cassano"),
                 new Role("2#1#2#3#Jun Woo"),
                 new Role("3#1#6#2#Hong Cha Young"),

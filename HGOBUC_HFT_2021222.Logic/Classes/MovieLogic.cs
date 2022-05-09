@@ -1,12 +1,9 @@
 ﻿using HGOBUC_HFT_2021222.Logic.Interfaces;
 using HGOBUC_HFT_2021222.Models;
 using HGOBUC_HFT_2021222.Repository.Interface;
-using HGOBUC_HFT_2021222.Repository.ModelRepositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HGOBUC_HFT_2021222.Logic.Classes
 {
@@ -34,6 +31,10 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
 
         public void Create(Movie item)
         {
+            if (item.Title.Length < 3)
+            {
+                throw new ArgumentException("title too short...");
+            }
             this.repo.Create(item);
         }
 
@@ -65,12 +66,13 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
 
         //5 NON CRUD
         //Average episode on movies released by each network
-        public IEnumerable<KeyValuePair<string, double>> AvgEpisodesPerNetwork()
+        public IEnumerable<KeyValuePair<string, double?>> AvgEpisodesPerNetwork()
         {
 
             var q1 = from x in repo.ReadAll()
-                     group x by x.NetworkId into g
-                     select new KeyValuePair<string, double>(networkRepo.Read(g.Key).NetworkName, g.Average(t => t.Episodes));
+                     join n in networkRepo.ReadAll() on x.NetworkId equals n.NetworkId
+                     group x by n.NetworkName into g
+                     select new KeyValuePair<string, double?>(g.Key, g.Average(t => t.Episodes));
 
             return q1;
         }
@@ -82,6 +84,7 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
             var q2 = from x in repo.ReadAll()
                      from r in roleRepo.ReadAll()
                      join a in actorRepo.ReadAll() on r.ActorId equals a.ActorId
+
                      where x.Rating == 10 && r.Priority == 1
                      select new KeyValuePair<string, string>(x.Title, a.ActorName);
  
@@ -91,21 +94,25 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
        public IEnumerable<KeyValuePair<string, double>> AvgMovieRateByNetwork()
         {
             var q3 = from x in repo.ReadAll()
-                     group x by x.NetworkId into g
-                     select new KeyValuePair<string, double>(networkRepo.Read(g.Key).NetworkName, g.Average(t => t.Rating));
-
+                     join n in networkRepo.ReadAll() on x.NetworkId equals n.NetworkId
+                     group x by x.Network.NetworkName into g
+                     select new KeyValuePair<string, double>(g.Key, g.Average(t => t.Rating));
+           
+            
             return q3;
+          
         }
 
-       //A színész által játszott filmek  
-        public IEnumerable<KeyValuePair<string, double>> AvgMoviesByActor()
+       //A színész által játszott filmek száma 8-nál kisebb értékeléssel
+        public IEnumerable<KeyValuePair<string, string>> ActorWith5RatedMovie()
         {
-            
+            var sub = from x in repo.ReadAll()
+                      where x.Rating == 5
+                      select x;
 
-            var q4 = from x in repo.ReadAll()
-                      join r in roleRepo.ReadAll() on x.MovieId equals r.MovieId
-                      group x by x.MovieId into g
-                      select new KeyValuePair<string, double>(roleRepo.Read(g.Key).Actor.ActorName, g.Count(t => t.MovieId == g.Key));
+            var q4 = from x in sub
+                     join r in roleRepo.ReadAll() on x.MovieId equals r.MovieId
+                     select new KeyValuePair<string, string>(r.Actor.ActorName, x.Title);
             return q4;
         }
 
