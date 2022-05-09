@@ -14,21 +14,39 @@ namespace HGOBUC_HFT_2021222.Client
         {
             if (entity == "Actors")
             {
-                Console.Write("Enter Actor Name: ");
+                Console.WriteLine("Enter Actor Name: ");
                 string name = Console.ReadLine();
                 rest.Post(new Actors() { ActorName = name }, "actor");
-                
-            }else if( entity == "Role")
+            }
+            else if( entity == "Role")
             {
                 Console.WriteLine("Enter the role: ");
                 string role = Console.ReadLine();
+                Console.WriteLine("Id of the movie the role is in: ");
+                int movieid = int.Parse(Console.ReadLine());
+                Console.WriteLine("Actor playing the role: ");
+               int  actorId = int.Parse(Console.ReadLine());
+                Console.WriteLine("Priority of the role (int) : ");
+                int priority = int.Parse(Console.ReadLine());
+                rest.Post(new Role() { RoleName = role, ActorId = actorId, MovieId = movieid, Priority = priority}, "role");
 
-                rest.Post(new Role() { RoleName = role }, "role");
             }else if(entity == "Movie")
             {
                 Console.WriteLine("Enter the title: ");
                 string title = Console.ReadLine();
-                rest.Post(new Movie() { Title = title }, "movie");
+                Console.WriteLine("Enter the number of episodes: ");
+                int ep = int.Parse(Console.ReadLine());
+                Console.WriteLine("Release year: ");
+                int aired = int.Parse(Console.ReadLine());
+                Console.WriteLine("Episode duration: ");
+                int duration = int.Parse(Console.ReadLine());
+                Console.WriteLine("Broadcasting network: ");
+                string network = Console.ReadLine();
+                Console.WriteLine("Rating: ");
+                int rate = int.Parse(Console.ReadLine());
+                Console.WriteLine("Roles: ");
+                
+                rest.Post(new Movie() { Title = title, Episodes = ep, Aired = aired, Duration = duration, Network = new Network {NetworkName = network  }, Rating = rate }, "movie");
             }else if(entity == "Network")
             {
                 Console.WriteLine("Enter the network: ");
@@ -84,6 +102,7 @@ namespace HGOBUC_HFT_2021222.Client
                 string name = Console.ReadLine();
                 one.ActorName = name;
                 rest.Put(one, "actor");
+
             }else if(entity == "Movie")
             {
                 Console.WriteLine("Enter the movie's id to update: ");

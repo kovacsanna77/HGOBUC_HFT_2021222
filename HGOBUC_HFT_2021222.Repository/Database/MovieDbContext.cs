@@ -23,7 +23,6 @@ namespace HGOBUC_HFT_2021222.Repository
                 builder
                    .UseLazyLoadingProxies()
                    .UseInMemoryDatabase("movie");
-                ;
             }
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -57,7 +56,7 @@ namespace HGOBUC_HFT_2021222.Repository
 
 
             modelBuilder.Entity<Movie>().HasData(new Movie[]
-             {
+            {
                    new Movie("1#Vincenzo#2020#20#90#1#10"),   
                    new Movie("2#Itaewon Class#2020#16#70#2#9"),
                    new Movie("3#My name#2021#8#50#6#8"),
@@ -68,10 +67,10 @@ namespace HGOBUC_HFT_2021222.Repository
                    new Movie("8#Red Cuff of the Sleeve#2021#17#80#5#9"),
                    new Movie("9#After the Rain#2018#2#65#3#7"),
                    
-             });
+            });
 
             modelBuilder.Entity<Actors>().HasData(new Actors[]
-                        {
+            {
                 new Actors("1#Song Jong Gi"),
                 new Actors("2#Ok Taec Yeon"),
                 new Actors("3#Han So Hee"),
@@ -83,16 +82,15 @@ namespace HGOBUC_HFT_2021222.Repository
                 new Actors("9#Woon Jin Ah")
             });
 
-
-             modelBuilder.Entity<Network>().HasData(new Network[]
-              {
+            modelBuilder.Entity<Network>().HasData(new Network[]
+            {
                     new Network("1#tvN"),
                     new Network("2#jTBC"),
                     new Network("3#KBS"),
                     new Network("4#SBS"),
                     new Network("5#MBC"),
                     new Network("6#Netflix")
-               });
+            });
 
             modelBuilder.Entity<Role>().HasData(new Role[]
             {

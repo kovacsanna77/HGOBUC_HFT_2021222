@@ -10,8 +10,6 @@ namespace HGOBUC_HFT_2021222.Models
 {
     public class Movie
     {
-        
-
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int MovieId { get; set; }
@@ -29,7 +27,6 @@ namespace HGOBUC_HFT_2021222.Models
         {
 
         }
-
         public Movie(string line)
         {
             string[] split = line.Split('#');
