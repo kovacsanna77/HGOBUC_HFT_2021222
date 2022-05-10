@@ -85,18 +85,18 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
                      join r in roleRepo.ReadAll() on x.MovieId equals r.RoleId
                      join a in actorRepo.ReadAll() on r.ActorId equals a.ActorId
                      where x.Rating == 10
-                     where r.Priority==1
+                     && r.Priority==1
                      select new KeyValuePair<string, string>(x.Title, a.ActorName);
  
            return q2;
         }
        // A csatorna filmejeinek átalgos értékelése
-       public IEnumerable<KeyValuePair<string, double>> AvgMovieRateByNetwork()
+       public IEnumerable<KeyValuePair<string, double?>> AvgMovieRateByNetwork()
         {
             var q3 = from x in repo.ReadAll()
                      join n in networkRepo.ReadAll() on x.NetworkId equals n.NetworkId
-                     group x by x.Network.NetworkName into g
-                     select new KeyValuePair<string, double>(g.Key, g.Average(t => t.Rating));
+                     group x by n.NetworkName into g
+                     select new KeyValuePair<string, double?>(g.Key, g.Average(t => t.Rating));
            
             
             return q3;
@@ -106,13 +106,11 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
        //A színész által játszott filmek száma 8-nál kisebb értékeléssel
         public IEnumerable<KeyValuePair<string, string>> ActorWith5RatedMovie()
         {
-            var sub = from x in repo.ReadAll()
-                      where x.Rating == 5
-                      select x;
-
-            var q4 = from x in sub
+            var q4 = from x in repo.ReadAll()
                      join r in roleRepo.ReadAll() on x.MovieId equals r.MovieId
-                     select new KeyValuePair<string, string>(r.Actor.ActorName, x.Title);
+                     join a in actorRepo.ReadAll() on r.ActorId equals a.ActorId
+                     where x.Rating == 5
+                     select new KeyValuePair<string, string>(a.ActorName, x.Title);
             return q4;
         }
 

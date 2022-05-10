@@ -28,7 +28,7 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
             return this.logic.AvgEpisodesPerNetwork();
         }
         [HttpGet]
-        public IEnumerable<KeyValuePair<string, double>> AvgMovieRateByNetwork()
+        public IEnumerable<KeyValuePair<string, double?>> AvgMovieRateByNetwork()
         {
             return this.logic.AvgMovieRateByNetwork();
         }

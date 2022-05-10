@@ -29,70 +29,59 @@ namespace HGOBUC_HFT_2021222.Test
             mockActorRepo = new Mock<IRepository<Actors>>();
             mockRoleRepo = new Mock<IRepository<Role>>();
 
-            Actors fakeActor = new Actors()
-            {
-                ActorId = 1,
-                ActorName = "Go",
-                Movies = new List<Movie>(),
-                Roles = new List<Role>()
-            };
-            Network fakeNetwork = new Network()
-            {
-                NetworkId = 1,
-                NetworkName = "SBS",
-                Movies = new List<Movie>()
-            };
-
-            Movie fakeMovie = new Movie()
-            {
-                MovieId = 1,
-                Title = "MovieA",
-                Aired = 2020,
-                Duration = 30,
-                Episodes = 6,
-                Network = fakeNetwork,
-                Rating = 4,
-                NetworkId = 1,
-                Actors = new List<Actors>(),
-                Roles = new List<Role>()
-
-            };
-            Role fakerole = new Role()
-            {
-                RoleId = 1,
-                RoleName = "abc",
-                Actor = fakeActor,
-                ActorId = 1,
-                MovieId = 1,
-                Priority = 1,
-                Movie = fakeMovie
-            };
-
-            fakeMovie.Actors.Add(fakeActor);
-            fakeMovie.Roles.Add(fakerole);
-            fakeNetwork.Movies.Add(fakeMovie);
-            fakeActor.Movies.Add(fakeMovie);
-            fakeActor.Roles.Add(fakerole);
-
             var role = new List<Role>()
             {
-                fakerole
+                new Role("1#1#1#1#Vincenzo Cassano"),
+                new Role("2#1#2#3#Jun Woo"),
+                new Role("3#1#6#2#Hong Cha Young"),
+                new Role("4#3#3#1#Yoon Ji Woo"),
+                new Role("5#3#4#2#Jeon Pil Do"),
+                new Role("6#2#5#1#Park Sae Roy"),
+                new Role("7#4#4#1#Do Bae Man"),
+                new Role("8#5#1#1#Eun Som/Sa Ya"),
+                new Role("9#5#7#3#Tan Ya"),
+                new Role("10#6#7#1#Yeom Mi Jung"),
+                new Role("11#7#8#1#Lee Gang Doo"),
+                new Role("12#7#9#1#Han Moon Soo"),
+                new Role("13#8#8#1#Yi San/King Jung Jo"),
+                new Role("14#9#3#4#Soo Jin")
             }.AsQueryable();
 
             var movie = new List<Movie>()
             {
-              fakeMovie
+              new Movie("1#Vincenzo#2020#20#90#1#10"),
+                   new Movie("2#Itaewon Class#2020#16#70#2#9"),
+                   new Movie("3#My name#2021#8#50#6#8"),
+                   new Movie("4#Military Prosecutor Doberman#2022#16#60#1#7"),
+                   new Movie("5#Arthdal Chronicles#2019#18#80#1#8"),
+                   new Movie("6#My Liberation Notes#2022#16#60#6#10"),
+                   new Movie("7#Just Between Lovers#2017#16#75#2#9"),
+                   new Movie("8#Red Cuff of the Sleeve#2021#17#80#5#5"),
+                   new Movie("9#After the Rain#2018#2#65#3#6"),
 
             }.AsQueryable();
 
             var network = new List<Network>()
             {
-                fakeNetwork
+                new Network("1#tvN"),
+                    new Network("2#jTBC"),
+                    new Network("3#KBS"),
+                    new Network("4#SBS"),
+                    new Network("5#MBC"),
+                    new Network("6#Netflix")
             }.AsQueryable();
 
             var actor = new List<Actors>()
             {
-              fakeActor
+                new Actors("1#Song Joong Gi"),
+                new Actors("2#Ok Taec Yeon"),
+                new Actors("3#Han So Hee"),
+                new Actors("4#Ahn Bo Hyun"),
+                new Actors("5#Park Seo Joon"),
+                new Actors("6#Jeon Yeo Bin"),
+                new Actors("7#Kim Ji Won"),
+                new Actors("8#Lee Jon Ho"),
+                new Actors("9#Woon Jin Ah")
             }.AsQueryable();
 
 
@@ -101,25 +90,28 @@ namespace HGOBUC_HFT_2021222.Test
             mockNetworkRepo.Setup(n => n.ReadAll()).Returns(network);
             mockActorRepo.Setup(a => a.ReadAll()).Returns(actor);
             mockRoleRepo.Setup(r => r.ReadAll()).Returns(role);
-
-            logic = new MovieLogic(mockMovieRepo.Object);
+           
+            logic = new MovieLogic(mockMovieRepo.Object, mockActorRepo.Object, mockRoleRepo.Object, mockNetworkRepo.Object);
             networkLogic = new NetworkLogic(mockNetworkRepo.Object);
             actorLogic = new ActorLogic(mockActorRepo.Object);
             roleLogic = new RoleLogic(mockRoleRepo.Object);
         }
 
+        //5 NON-CRUD TEST
         [Test]
         public void AvgMovieRateByNetwork()
         {
             var actual = logic.AvgMovieRateByNetwork().ToList();
 
+            var expected = 
+                new KeyValuePair<string, double?>("Netflix", 9);
 
-            Assert.AreEqual(actual[1], new KeyValuePair<string, double>("jTBC", 9));
+            Assert.That(actual[2], Is.EqualTo(expected));
         }
         [Test]
         public void AvgEpisodesPerNetworkTest()
         {
-            var actual = logic.AvgEpisodesPerNetwork().ToArray();
+            var actual = logic.AvgEpisodesPerNetwork().ToList();
 
             var expected =
                  new KeyValuePair<string, double?>("jTBC", 16);
@@ -127,6 +119,28 @@ namespace HGOBUC_HFT_2021222.Test
             Assert.That(actual[1], Is.EqualTo(expected));
         }
 
+        [Test]
+        public void MoviesWith10ratingWithMainActorTest()
+        {
+            var actual = logic.MoviesWith10RatingWithMainActor().ToList();
+
+            var expected = 
+                new KeyValuePair<string, string>("Vincenzo", "Song Joong Gi");
+
+            Assert.That(actual[0], Is.EqualTo(expected));
+        }
+
+        [Test]
+        public void ActorWith5RatedMovieTest()
+        {
+            var actual = logic.ActorWith5RatedMovie().ToList();
+
+            var expected = 
+                new KeyValuePair<string, string>("Lee Jon Ho", "Red Cuff of the Sleeve");
+
+            Assert.That(actual[0], Is.EqualTo(expected));
+        }
+      // 3 CREATE TEST + 2 RANDOM 
         [Test]
         public void CreateMovieTestWrongTitle()
         {
