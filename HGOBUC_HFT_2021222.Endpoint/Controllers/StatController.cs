@@ -42,5 +42,10 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         {
             return this.logic.ActorWith5RatedMovie();
         }
+        [HttpGet]
+        public IEnumerable<string> ActorsWith10Rating()
+        {
+            return this.logic.ActorsWith10Rating();
+        }
     }
 }

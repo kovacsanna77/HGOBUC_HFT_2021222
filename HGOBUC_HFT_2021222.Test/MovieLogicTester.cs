@@ -53,11 +53,11 @@ namespace HGOBUC_HFT_2021222.Test
                    new Movie("2#Itaewon Class#2020#16#70#2#9"),
                    new Movie("3#My name#2021#8#50#6#8"),
                    new Movie("4#Military Prosecutor Doberman#2022#16#60#1#7"),
-                   new Movie("5#Arthdal Chronicles#2019#18#80#1#8"),
-                   new Movie("6#My Liberation Notes#2022#16#60#6#10"),
-                   new Movie("7#Just Between Lovers#2017#16#75#2#9"),
+                   new Movie("5#Arthdal Chronicles#2019#18#80#1#10"),
+                   new Movie("6#My Liberation Notes#2022#16#60#6#9"),
+                   new Movie("7#Just Between Lovers#2017#16#75#2#10"),
                    new Movie("8#Red Cuff of the Sleeve#2021#17#80#5#5"),
-                   new Movie("9#After the Rain#2018#2#65#3#6"),
+                   new Movie("9#After the Rain#2018#2#65#3#6")
 
             }.AsQueryable();
 
@@ -104,7 +104,7 @@ namespace HGOBUC_HFT_2021222.Test
             var actual = logic.AvgMovieRateByNetwork().ToList();
 
             var expected = 
-                new KeyValuePair<string, double?>("Netflix", 9);
+                new KeyValuePair<string, double?>("Netflix", 8.5);
 
             Assert.That(actual[2], Is.EqualTo(expected));
         }
@@ -137,6 +137,15 @@ namespace HGOBUC_HFT_2021222.Test
 
             var expected = 
                 new KeyValuePair<string, string>("Lee Jon Ho", "Red Cuff of the Sleeve");
+
+            Assert.That(actual[0], Is.EqualTo(expected));
+        }
+        [Test]
+        public void ActorsWhith10RatingTest()
+        {
+            var actual = logic.ActorsWith10Rating().ToList();
+
+            var expected ="Song Joong Gi";
 
             Assert.That(actual[0], Is.EqualTo(expected));
         }

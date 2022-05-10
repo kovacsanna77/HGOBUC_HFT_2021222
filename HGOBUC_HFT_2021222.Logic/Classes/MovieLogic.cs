@@ -116,7 +116,18 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
 
         //5
 
-       
+      public IEnumerable<string> ActorsWith10Rating()
+        {
+
+            var q5 = from x in repo.ReadAll()
+                     join r in roleRepo.ReadAll() on x.MovieId equals r.MovieId
+                     join a in actorRepo.ReadAll() on r.ActorId equals a.ActorId
+                     where x.Rating == 10
+                     
+                     select a.ActorName;
+
+            return q5;
+        }
         
        
 

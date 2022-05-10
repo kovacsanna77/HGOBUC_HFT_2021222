@@ -129,7 +129,7 @@ namespace HGOBUC_HFT_2021222.Client
                 Console.WriteLine("Enter the network's id to update: ");
                 int id = int.Parse(Console.ReadLine());
                 Network one = rest.Get<Network>(id, "network");
-                Console.Write($"New name [old: {one.NetworkName}]: ");
+                Console.Write($"New name: ");
                 string name = Console.ReadLine();
                 one.NetworkName = name;
                 rest.Put(one, "movie");
@@ -167,7 +167,7 @@ namespace HGOBUC_HFT_2021222.Client
             var stat1 = rest.Get<KeyValuePair<string, double?>>("stat/AvgEpisodesPerNetwork");
             foreach (var item in stat1)
             {
-                Console.WriteLine(item.Key + ": " + item.Value);
+                Console.WriteLine(item.Key + " - " + item.Value);
             }
             Console.ReadKey();
         }
@@ -177,25 +177,34 @@ namespace HGOBUC_HFT_2021222.Client
             var stat2 = rest.Get<KeyValuePair<string, string>>("stat/MoviesWith10Rating");
             foreach (var item in stat2)
             {
-                Console.WriteLine(item.Key + " -- " + item.Value);
+                Console.WriteLine(item.Key + " - " + item.Value);
             }
             Console.ReadKey();
         }
         static void AvgMovieRateByNetwork()
         {
-            var stat2 = rest.Get<KeyValuePair<string, double>>("stat/AvgMovieRateByNetwork");
-            foreach (var item in stat2)
+            var stat3 = rest.Get<KeyValuePair<string, double>>("stat/AvgMovieRateByNetwork");
+            foreach (var item in stat3)
             {
-                Console.WriteLine(item.Key + " -- " + item.Value);
+                Console.WriteLine(item.Key + " - " + item.Value);
             }
             Console.ReadKey();
         }
         static void ActorWith5RatedMovie()
         {
-            var stat2 = rest.Get<KeyValuePair<string, string>>("stat/ActorWith5RatedMovie");
-            foreach (var item in stat2)
+            var stat4= rest.Get<KeyValuePair<string, string>>("stat/ActorWith5RatedMovie");
+            foreach (var item in stat4)
             {
-                Console.WriteLine(item.Key + " -- " + item.Value);
+                Console.WriteLine(item.Key + " - " + item.Value);
+            }
+            Console.ReadKey();
+        }
+        static void ActorsWith10Rating()
+        {
+            var stat5 = rest.Get<string>("stat/ActorsWith10Rating");
+            foreach (var item in stat5)
+            {
+                Console.WriteLine(item);
             }
             Console.ReadKey();
         }
@@ -234,7 +243,8 @@ namespace HGOBUC_HFT_2021222.Client
                 .Add("Average Episodes in a Movie By Network", () => AvgEpisodesPerNetwork())
                 .Add("10 rated MoviesWith main Actor", () => MoviesWith10RatingWithMainActor())
                 .Add("Average rating by network", () => AvgMovieRateByNetwork())
-                .Add("Acotr's movie rated 5", () => ActorWith5RatedMovie())
+                .Add("Actors with a movie rated 5", () => ActorWith5RatedMovie())
+                .Add("Actor With more than one 10 Rated movie", () => ActorsWith10Rating())
                 .Add("Exit", ConsoleMenu.Close);
 
 
