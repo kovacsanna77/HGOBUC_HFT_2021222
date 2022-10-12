@@ -36,7 +36,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 
         public RolesTableWindowViewModel()
         {
-            roles = new RestCollection<Role>("http://localhost:27826/", "role");
+            roles = new RestCollection<Role>("http://localhost:27826/", "role", "hub");
 
             CreateRoleCommand = new RelayCommand(
                 () =>

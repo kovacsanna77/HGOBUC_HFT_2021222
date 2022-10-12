@@ -51,7 +51,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
         }
         public MoviesTableViewMode()
         {
-            Movies = new RestCollection<Movie>("http://localhost:27826/", "movie");
+            Movies = new RestCollection<Movie>("http://localhost:27826/", "movie", "hub");
 
             CreateMovieCommand = new RelayCommand(
                     () =>

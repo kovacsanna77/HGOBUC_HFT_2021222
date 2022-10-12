@@ -42,7 +42,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 
         public ActrosTableWindowViewModel()
         {
-            Actors = new RestCollection<Actors>("http://localhost:27826/", "actor");
+            Actors = new RestCollection<Actors>("http://localhost:27826/", "actor", "hub");
            CreateActorCommand = new RelayCommand(
                     () =>
                     {
