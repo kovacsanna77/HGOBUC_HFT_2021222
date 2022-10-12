@@ -22,11 +22,22 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                 () => OpenMovies()
 
                 );
+            RolesTableCommand = new RelayCommand(
+                () => OpenRoles());
         }
 
         public void OpenMovies()
         {
             new MoviesTable().ShowDialog();
+        }
+        public void OpenRoles()
+        {
+            new RolesTableWindow().ShowDialog();
+        }
+
+        public void OpenActors()
+        {
+            //new ActorsTableWindow().ShowDialog();
         }
     }
 }

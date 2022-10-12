@@ -25,9 +25,9 @@
         <StackPanel Grid.Column="1">
             <Label Content="Title" Background="LightBlue" Padding="10"/>
             <TextBox Text="{Binding SelectedRole.RoleName}" Padding="10" Margin="0,0,0,20"/>
-            <Button Content="Create Movie" Command="{Binding CreateRoleCommand}" Margin="10" Padding="10"/>
-            <Button Content="Delete Movie" Command="{Binding DeleteRoleCommand}" Margin="10" Padding="10"/>
-            <Button Content="Edit Movie" Command="{Binding EditRoleCommand}" Margin="10" Padding="10"/>
+            <Button Content="Create Role" Command="{Binding CreateRoleCommand}" Margin="10" Padding="10"/>
+            <Button Content="Delete Role" Command="{Binding DeleteRoleCommand}" Margin="10" Padding="10"/>
+            <Button Content="Edit Role" Command="{Binding EditRoleCommand}" Margin="10" Padding="10"/>
         </StackPanel>
     </Grid>
 </Window>
