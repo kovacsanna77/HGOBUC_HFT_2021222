@@ -24,5 +24,7 @@ namespace HGOBUC_HFT_2021222.WpfClient
         {
             InitializeComponent();
         }
+
+        
     }
 }
