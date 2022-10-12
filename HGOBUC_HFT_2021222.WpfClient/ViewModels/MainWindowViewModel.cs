@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace HGOBUC_HFT_2021222.WpfClient
+namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 {
     public class MainWindowViewModel
     {
@@ -16,7 +16,7 @@ namespace HGOBUC_HFT_2021222.WpfClient
 
         public MainWindowViewModel()
         {
-           
+
         }
     }
 }
