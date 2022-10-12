@@ -51,7 +51,34 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
         }
         public MoviesTableViewMode()
         {
+            Movies = new RestCollection<Movie>("http://localhost:27826/", "movie");
 
+            CreateMovieCommand = new RelayCommand(
+                    () =>
+                    {
+                        Movies.Add(new Movie()
+                        {
+                            Title = SelectedMovie.Title
+                        });
+                    }
+                );
+
+            EditMovieCommand = new RelayCommand(() =>
+            {
+                Movies.Update(SelectedMovie);
+            }
+            );
+
+            DeleteMovieCommand = new RelayCommand(() =>
+            {
+                Movies.Delete(SelectedMovie.MovieId);
+            },
+                () =>
+                {
+                    return SelectedMovie != null;
+                }
+            );
+            SelectedMovie = new Movie();
         }
     }
 }
