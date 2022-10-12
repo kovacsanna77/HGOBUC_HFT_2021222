@@ -1,6 +1,9 @@
-﻿using HGOBUC_HFT_2021222.Logic.Interfaces;
+﻿using HGOBUC_HFT_2021222.Endpoint.Services;
+using HGOBUC_HFT_2021222.Logic.Interfaces;
 using HGOBUC_HFT_2021222.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,10 +18,12 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
     public class ActorController : ControllerBase
     {
         IActorLogic logic;
+        IHubContext<SignalRHub> hub;
 
-        public ActorController(IActorLogic logic)
+        public ActorController(IActorLogic logic, IHubContext<SignalRHub> hub)
         {
             this.logic = logic;
+            this.hub = hub;
         }
 
         [HttpGet]
@@ -38,6 +43,7 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         public void Create([FromBody] Actors value)
         {
             this.logic.Create(value);
+            this.hub.Clients.All.SendAsync("ActorCreated", value);
         }
 
 
@@ -45,13 +51,16 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         public void Update([FromBody] Actors value)
         {
             this.logic.Update(value);
+            this.hub.Clients.All.SendAsync("ActorUpdated", value);
         }
 
 
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            var actorToDelete = logic.Read(id);
             this.logic.Delete(id);
+            this.hub.Clients.All.SendAsync("ActorDeleted", actorToDelete);
         }
     }
 }

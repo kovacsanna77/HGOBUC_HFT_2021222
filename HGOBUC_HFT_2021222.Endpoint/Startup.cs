@@ -1,4 +1,5 @@
 
+using HGOBUC_HFT_2021222.Endpoint.Services;
 using HGOBUC_HFT_2021222.Logic.Classes;
 using HGOBUC_HFT_2021222.Logic.Interfaces;
 using HGOBUC_HFT_2021222.Models;
@@ -44,6 +45,7 @@ namespace HGOBUC_HFT_2021222.Endpoint
             services.AddTransient<IActorLogic, ActorLogic>();
             services.AddTransient<INetworkLogic, NetworkLogic>();
 
+            services.AddSignalR();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
@@ -68,6 +70,7 @@ namespace HGOBUC_HFT_2021222.Endpoint
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHub<SignalRHub>("/hub");
             });
         }
     }
