@@ -24,6 +24,10 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                 );
             RolesTableCommand = new RelayCommand(
                 () => OpenRoles());
+
+            ActrosTableCommand = new RelayCommand(
+                ()=> OpenActors()
+                );
         }
 
         public void OpenMovies()
@@ -37,7 +41,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 
         public void OpenActors()
         {
-            //new ActorsTableWindow().ShowDialog();
+            new ActorsTableWindow().ShowDialog();
         }
     }
 }
