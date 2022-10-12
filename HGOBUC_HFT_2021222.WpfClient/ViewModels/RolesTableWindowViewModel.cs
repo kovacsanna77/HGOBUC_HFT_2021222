@@ -56,7 +56,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                 () => roles.Update(selectedRole)
                 );
 
-
+            SelectedRole = new Role();
         }
 
 
