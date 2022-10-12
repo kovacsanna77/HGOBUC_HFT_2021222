@@ -16,7 +16,7 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Movies table" HorizontalContentAlignment="Center" Margin="200,50,200,50" Padding="10" Background="PaleVioletRed" />
+        <Button Grid.Row="0" Content="Movies table" HorizontalContentAlignment="Center" Margin="200,50,200,50" Padding="10" Background="PaleVioletRed" Command="{Binding MoviesTableCommand}"/>
         <Button Grid.Row="1" Content="Actors table" HorizontalContentAlignment="Center" Margin="200,50,200,50" Padding="10" Background="PaleVioletRed"/>
         <Button Grid.Row="2" Content="Roles table" HorizontalContentAlignment="Center" Margin="200,50,200,50" Padding="10" Background="PaleVioletRed"/>
     </Grid>
