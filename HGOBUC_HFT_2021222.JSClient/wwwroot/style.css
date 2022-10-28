@@ -1,3 +1,10 @@
 ﻿body {
     background-color: papayawhip;
 }
+h1 {
+    font-family: "Lucida Console", "Courier New", sans-serif;
+    font-size: 2em;
+    position: absolute;
+    padding: 2em;
+    margin: auto;
+}
