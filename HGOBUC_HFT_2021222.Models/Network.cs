@@ -22,7 +22,7 @@ namespace HGOBUC_HFT_2021222.Models
 
         public Network()
         {
-            Movies = new HashSet<Movie>();
+            
         }
 
         public Network(string line)
@@ -30,7 +30,7 @@ namespace HGOBUC_HFT_2021222.Models
             string[] split = line.Split('#');
             NetworkId = int.Parse(split[0]);
             NetworkName = split[1];
-            Movies = new HashSet<Movie>();
+           
         }
     }
 }

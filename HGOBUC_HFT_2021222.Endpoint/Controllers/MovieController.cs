@@ -61,7 +61,7 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         {
             var movieToDelete = logic.Read(id);
             this.logic.Delete(id);
-            this.hub.Clients.All.SendAsync("MoviDeleted", movieToDelete);
+            this.hub.Clients.All.SendAsync("MovieDeleted", movieToDelete);
         }
     }
 }

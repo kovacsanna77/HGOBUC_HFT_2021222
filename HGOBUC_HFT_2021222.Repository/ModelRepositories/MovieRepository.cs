@@ -22,9 +22,9 @@ namespace HGOBUC_HFT_2021222.Repository.ModelRepositories
         public override void Update(Movie item)
         {
             var old = Read(item.MovieId);
-            foreach (var i in old.GetType().GetProperties())
+            foreach (var prop in old.GetType().GetProperties())
             {
-                i.SetValue(old, i.GetValue(item));
+                prop.SetValue(old, prop.GetValue(item));
             }
             ctx.SaveChanges();
         }
