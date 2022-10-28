@@ -64,6 +64,7 @@ namespace HGOBUC_HFT_2021222.Endpoint
             }
 
             app.UseRouting();
+           
 
             app.UseAuthorization();
 
