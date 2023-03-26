@@ -10,9 +10,9 @@ using System.Windows.Input;
 
 namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 {
-    public class ActrosTableWindowViewModel: ObservableRecipient
+    public class ActorsTableWindowViewModel: ObservableRecipient
     {
-        public RestCollection<Actors> Actors { get; set; }
+        public RestCollection<Actors> Actor { get; set; }
 
         private Actors selectedActor;
 
@@ -40,13 +40,13 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 
 
 
-        public ActrosTableWindowViewModel()
+        public ActorsTableWindowViewModel()
         {
-            Actors = new RestCollection<Actors>("http://localhost:27826/", "actor", "hub");
+           Actor = new RestCollection<Actors>("http://localhost:27826/", "actor", "hub");
            CreateActorCommand = new RelayCommand(
                     () =>
                     {
-                        Actors.Add(new Actors()
+                        Actor.Add(new Actors()
                         {
                             ActorName = SelectedActor.ActorName
                         });
@@ -55,13 +55,13 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 
             EditActorCommand = new RelayCommand(() =>
             {
-                Actors.Update(SelectedActor);
+                Actor.Update(SelectedActor);
             }
             );
 
             DeleteActorCommand = new RelayCommand(() =>
             {
-               Actors.Delete(SelectedActor.ActorId);
+               Actor.Delete(SelectedActor.ActorId);
             },
                 () =>
                 {

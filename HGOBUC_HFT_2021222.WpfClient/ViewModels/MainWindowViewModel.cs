@@ -12,7 +12,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
     public class MainWindowViewModel: ObservableRecipient
     {
         public ICommand MoviesTableCommand { get; set; }
-       public ICommand ActrosTableCommand { get; set; }
+       public ICommand NetworkTableCommand { get; set; }
        public  ICommand RolesTableCommand { get; set; }
 
 
@@ -25,8 +25,8 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
             RolesTableCommand = new RelayCommand(
                 () => OpenRoles());
 
-            ActrosTableCommand = new RelayCommand(
-                ()=> OpenActors()
+            NetworkTableCommand = new RelayCommand(
+                ()=> OpenNetwork()
                 );
         }
 
@@ -39,9 +39,9 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
             new RolesTableWindow().ShowDialog();
         }
 
-        public void OpenActors()
+        public void OpenNetwork()
         {
-            new ActorsTableWindow().ShowDialog();
+            new NetworkTableWindow().ShowDialog();
         }
     }
 }

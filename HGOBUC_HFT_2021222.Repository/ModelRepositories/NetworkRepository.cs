@@ -21,10 +21,10 @@ namespace HGOBUC_HFT_2021222.Repository.ModelRepositories
 
         public override void Update(Network item)
         {
-            var old = Read(item.NetworkId);
-            foreach (var i in old.GetType().GetProperties())
+            Network old = Read(item.NetworkId);
+            foreach (var prop in old.GetType().GetProperties())
             {
-                i.SetValue(old, i.GetValue(item));
+                prop.SetValue(old, prop.GetValue(item));
             }
             ctx.SaveChanges();
         }
