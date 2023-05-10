@@ -23,17 +23,19 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
             get { return selectedMovie; }
             set
             {
-                if (value != null)
-                {
-                    selectedMovie = new Movie()
-                    {
-                        Title = value.Title,
-                        MovieId = value.MovieId,
+                SetProperty(ref selectedMovie, value);
+                //if (value != null)
+                //{
+                //    selectedMovie = new Movie()
+                //    {
+                //        Title = value.Title,
+                //        MovieId = value.MovieId,
 
-                    };
-                }
+                //    };
+                //}
                 OnPropertyChanged();
                 (DeleteMovieCommand as RelayCommand).NotifyCanExecuteChanged();
+                (EditMovieCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 

@@ -22,20 +22,23 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 			get { return selectedNetwork; }
 			set
 			{
-				if (value != null)
-				{
-					selectedNetwork = new Network()
-					{
-						NetworkId = value.NetworkId,
-						NetworkName = value.NetworkName
+				SetProperty(ref selectedNetwork, value);
+				//if (value != null)
+				//{
+				//	selectedNetwork = new Network()
+				//	{
+				//		NetworkId = value.NetworkId,
+				//		NetworkName = value.NetworkName
 
-					};
-				}
+				//	};
+				//}
 				OnPropertyChanged();
 				(DeleteNetworkCommand as RelayCommand).NotifyCanExecuteChanged();
+				(EditNetworkCommand as RelayCommand).NotifyCanExecuteChanged();
 
 
-			}
+
+            }
 		}
 		public ICommand CreateNetworkCommand { get; set; }
 		public ICommand DeleteNetworkCommand { get; set; }
@@ -50,17 +53,25 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 				{
 					networks.Add(new Network()
 					{
-						NetworkName = selectedNetwork.NetworkName
+						NetworkName = SelectedNetwork.NetworkName
 					});
 				}
 				);
+
 			DeleteNetworkCommand = new RelayCommand(
-				() => networks.Delete(selectedNetwork.NetworkId)
-				);
+				() => networks.Delete(selectedNetwork.NetworkId),
+				() =>
+                {
+                    return selectedNetwork != null;
+                }
+
+                );
 
 			EditNetworkCommand = new RelayCommand(
-				() => networks.Update(selectedNetwork)
+				() => networks.Update(SelectedNetwork),
+				() => SelectedNetwork != null
 				);
+			SelectedNetwork = new Network();
 		}
 
     }

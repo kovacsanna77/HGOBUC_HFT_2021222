@@ -16,17 +16,19 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
             get { return selectedRole; }
             set
             {
-                if (value != null)
-                {
-                    selectedRole = new Role()
-                    {
-                        RoleId = value.RoleId,
-                        RoleName = value.RoleName
+                SetProperty(ref selectedRole, value);
+                //if (value != null)
+                //{
+                //    selectedRole = new Role()
+                //    {
+                //        RoleId = value.RoleId,
+                //        RoleName = value.RoleName
 
-                    };
-                }
+                //    };
+                //}
                 OnPropertyChanged();
                 (DeleteRoleCommand as RelayCommand).NotifyCanExecuteChanged();
+                (EditRoleCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -43,17 +45,18 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                 {
                     roles.Add(new Role()
                     {
-                        RoleName = selectedRole.RoleName
+                        RoleName = SelectedRole.RoleName
                     });
                 }
                 );
 
             DeleteRoleCommand = new RelayCommand(
-                () => roles.Delete(selectedRole.RoleId)
+                () => roles.Delete(SelectedRole.RoleId)
                 );
 
             EditRoleCommand = new RelayCommand(
-                () => roles.Update(selectedRole)
+                () => roles.Update(SelectedRole),
+                () => SelectedRole != null
                 );
 
             SelectedRole = new Role();
