@@ -44,5 +44,21 @@ namespace HGOBUC_HFT_2021222.Models
             Rating = int.Parse(split[6]);
         }
 
+        public Movie getCopy()
+        {
+            return new Movie()
+            {
+                MovieId = this.MovieId,
+                Title = this.Title,
+                Aired = this.Aired,
+                Episodes = this.Episodes,
+                Duration = this.Duration,
+                NetworkId = this.NetworkId,
+                Rating = this.Rating,
+                Actors = this.Actors,
+                Roles = this.Roles
+
+            };
+        }
     }
 }

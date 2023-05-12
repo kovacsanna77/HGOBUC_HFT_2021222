@@ -60,7 +60,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                     {
                         Movies.Add(new Movie()
                         {
-                            Title = SelectedMovie.Title
+                            Title = SelectedMovie.getCopy().Title
                         });
                     }
                 );
