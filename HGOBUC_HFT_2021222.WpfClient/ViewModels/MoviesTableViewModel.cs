@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
 using HGOBUC_HFT_2021222.WpfClient.NonCrudWindows;
+using System.Numerics;
+using System.Windows.Media;
+using HGOBUC_HFT_2021222.WpfClient.ViewModels.NonCrudViewModels;
 
 namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 {
@@ -72,7 +75,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
            
 
             nonCruds = getListofNonCruds();
-            //mindegyiknek külön ablak, hogy lehessen normélisan ábrázolni? 
+            //mindegyiknek külön ablak, hogy lehessen normálisan ábrázolni? 
 
             ShowResultCommand = new RelayCommand(() => OpenNonCrud(SelectedNonCrud));
 
@@ -108,7 +111,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
         {
             nonCruds = new List<string>();
             nonCruds.Add("Average episodes per network");
-            nonCruds.Add("Movies with 10 ratin and with main actor");
+            nonCruds.Add("Movies with 10 rating and with main actor");
             nonCruds.Add("Average movie ratings by network");
             nonCruds.Add("Actors with 5 rated movies");
             nonCruds.Add("Actros with 10 ratings");
@@ -124,6 +127,15 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
             {
                 new AvgEpisodesPerNetworkWindow().ShowDialog();
             
+            }else if(selected =="Movies with 10 rating and with main actor")
+            {
+                new MoviesWith10RatingWindow().ShowDialog();
+            }else if(selected == "Average movie ratings by network")
+            {
+                new AvgMovieRateByNetwork().ShowDialog();
+            }else if(selected == "Actors with 5 rated movies")
+            {
+                new ActorWith5RatedMovieWindow().ShowDialog();
             }
         }
     }
