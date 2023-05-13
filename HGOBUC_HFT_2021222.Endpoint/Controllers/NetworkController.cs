@@ -61,7 +61,7 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         {
             var NedtworkToDelete = logic.Read(id);
             this.logic.Delete(id);
-            this.hub.Clients.All.SendAsync("DetworkDeleted", NedtworkToDelete);
+            this.hub.Clients.All.SendAsync("NetworkDeleted", NedtworkToDelete);
         }
     }
 }
