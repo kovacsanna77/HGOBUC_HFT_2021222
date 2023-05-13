@@ -57,16 +57,20 @@ namespace HGOBUC_HFT_2021222.Repository
 
             modelBuilder.Entity<Movie>().HasData(new Movie[]
             {
-                //ID#Title#Aired#Episodes#Duration#Networkid#Rating
-                   new Movie("1#Vincenzo#2020#20#90#1#10"),   
-                   new Movie("2#Itaewon Class#2020#16#70#2#9"),
-                   new Movie("3#My name#2021#8#50#6#8"),
-                   new Movie("4#Military Prosecutor Doberman#2022#16#60#1#7"),
-                   new Movie("5#Arthdal Chronicles#2019#18#80#1#10"),
-                   new Movie("6#My Liberation Notes#2022#16#60#6#9"),
-                   new Movie("7#Just Between Lovers#2017#16#75#2#10"),
-                   new Movie("8#Red Cuff of the Sleeve#2021#17#80#5#5"),
-                   new Movie("9#After the Rain#2018#2#65#3#6"),
+                //ID#Title#Aired#Episodes#Duration#Networkid#Rating 
+                   new Movie("1#Vincenzo#2020#20#90#1#10"),   //tvN 20 ep 10 rating 90 min 2020
+                   new Movie("2#Itaewon Class#2020#16#70#2#9"), //jTBC 16 ep 9 rating 70 min 2020
+                   new Movie("3#My name#2021#8#50#6#8"), //netflix 8 ep 8 rating 50 min 2021
+                   new Movie("4#Military Prosecutor Doberman#2022#16#60#1#7"),  //tvN 16 ep 60min 7 rating 2022
+                   new Movie("5#Arthdal Chronicles#2019#18#80#1#10"), // tvN 18 ep 10 rating 80 min 2019
+                   new Movie("6#My Liberation Notes#2022#16#60#6#9"), //netflix 16 ep 9 ratin 60min 2022
+                   new Movie("7#Just Between Lovers#2017#16#75#2#10"), //jtbc 16 ep 10 rating 75 min 2017
+                   new Movie("8#Red Cuff of the Sleeve#2021#17#80#5#5"), //MBC 17 ep 5 rating 80 min 2021
+                   new Movie("9#After the Rain#2018#20#65#3#6"), //KBS 20 ep 6 rating 65 min 2018
+                   new Movie("10#Black Knight#2023#6#50#6#8"),//Netflic 6 ep 8 rating 50 min 2022
+                   new Movie("11#Figth For My Way#2017#16#60#3#8"),  //KBS 16 ep 8 rating 60 min 2017
+                   new Movie("12#Tomorrow#2022#16#60#5#10") //MBC 16 ep 10 rating 60 min 2022
+
                    
             });
 
@@ -80,7 +84,10 @@ namespace HGOBUC_HFT_2021222.Repository
                 new Actors("6#Jeon Yeo Bin"),
                 new Actors("7#Kim Ji Won"),
                 new Actors("8#Lee Jon Ho"),
-                new Actors("9#Woon Jin Ah")
+                new Actors("9#Woon Jin Ah"),
+                new Actors("10#Kim Woo Bin"),
+                new Actors("11#Ro Woon"),
+                new Actors("12#Kim Hee Sun")
             });
 
             modelBuilder.Entity<Network>().HasData(new Network[]
@@ -109,7 +116,14 @@ namespace HGOBUC_HFT_2021222.Repository
                 new Role("11#7#8#1#Lee Gang Doo"),
                 new Role("12#7#9#1#Han Moon Soo"),
                 new Role("13#8#8#1#Yi San/King Jung Jo"),
-                new Role("14#9#3#4#Soo Jin")
+                new Role("14#9#3#4#Soo Jin"),
+                new Role("15#11#5#1#Ko Dong Man"),
+                new Role("16#11#7#1#Choi Ae Ra"),
+                new Role("17#10#10#1#5-8"),
+                new Role("18#12#11#1#Choi Joon Woong"),
+                new Role("19#12#12#1#Goo Ryun"),
+
+
 
             });
 

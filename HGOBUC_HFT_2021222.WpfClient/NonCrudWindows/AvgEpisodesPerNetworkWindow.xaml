@@ -10,7 +10,5 @@
     <Window.DataContext>
         <vm:AvgEpisodesPerNetworkWindowViewModel/>
     </Window.DataContext>
-    <Grid>
-        
-    </Grid>
+    <ListBox ItemsSource="{Binding getAvgEpPerNetwork}"/>
 </Window>

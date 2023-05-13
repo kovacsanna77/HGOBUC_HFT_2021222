@@ -117,10 +117,11 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 
         public void OpenNonCrud(string selected)
         {
-            if (selected == "ActorsWith10Rating")
+            if (selected == "Actros with 10 ratings")
             {
                 new NoncrudWindow(selected).ShowDialog();
-            }else if( selected == "AverageEpidodesPerNetwork"){
+            }else if( selected == "Average episodes per network")
+            {
                 new AvgEpisodesPerNetworkWindow().ShowDialog();
             
             }

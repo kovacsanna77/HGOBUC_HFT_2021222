@@ -8,24 +8,20 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels.NonCrudViewModels
 {
     public class AvgEpisodesPerNetworkWindowViewModel
     {
-        //List<<string,double>> avgEpPerNetwork{ get; set; }
+        IEnumerable<KeyValuePair<string,double>> avgEpPerNetwork{ get; set; }
         RestService rest;
         string selectedNonCrud { get; set; }
 
-        public List<string> ActorsWith10ratings
+        public IEnumerable<KeyValuePair<string,double>> getAvgEpPerNetwork
         {
-            get { return rest.Get<string>("Stat/ActorsWith10Rating"); }
+            get { return rest.Get<KeyValuePair<string, double>>("Stat/AvgEpisodesPerNetwork"); }
         }
 
         public AvgEpisodesPerNetworkWindowViewModel()
         {
             rest = new RestService("http://localhost:27826/");
 
-            if (selectedNonCrud == "ActorsWith10ratings")
-            {
-                //actorswith10ratings = new List<string>();
-                //actorswith10ratings = ActorsWith10ratings.ToList();
-            }
+            avgEpPerNetwork = getAvgEpPerNetwork;
 
         }
 
