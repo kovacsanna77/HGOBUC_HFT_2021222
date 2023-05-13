@@ -60,7 +60,7 @@ namespace HGOBUC_HFT_2021222.Endpoint.Controllers
         public void Delete(int id)
         {
             var NedtworkToDelete = logic.Read(id);
-            this.logic.Delete(id);
+            this.logic.Delete(id); 
             this.hub.Clients.All.SendAsync("NetworkDeleted", NedtworkToDelete);
         }
     }
