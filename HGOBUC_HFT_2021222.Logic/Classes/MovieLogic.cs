@@ -13,6 +13,7 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
         IRepository<Actors> actorRepo;
         IRepository<Role> roleRepo;
         IRepository<Network> networkRepo;
+        List<string> nonCruds { get; set; }
 
         public MovieLogic(IRepository<Movie> repo)
         {
@@ -64,6 +65,17 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
             this.repo.Update(item);
         }
 
+        public List<string> getListofNonCruds()
+        {
+            nonCruds = new List<string>();
+            nonCruds.Add("Average episodes per network");
+            nonCruds.Add("Movies with 10 ratin and with main actor");
+            nonCruds.Add("Average movie ratings by network");
+            nonCruds.Add("Actors with 5 rated movies");
+            nonCruds.Add("Actros with 10 ratings");
+            return nonCruds;
+        }
+        
         //5 NON CRUD
         //Average episode on movies released by each network
         public IEnumerable<KeyValuePair<string, double?>> AvgEpisodesPerNetwork()
@@ -76,8 +88,8 @@ namespace HGOBUC_HFT_2021222.Logic.Classes
 
             return q1;
         }
-
-        //Filmek 10 feletti értékeléssel és ezek főszereplői
+        
+       //Filmek 10 feletti értékeléssel és ezek főszereplői
 
       public IEnumerable<KeyValuePair<string, string>> MoviesWith10RatingWithMainActor()
         {

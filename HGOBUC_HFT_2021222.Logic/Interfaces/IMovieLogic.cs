@@ -9,6 +9,7 @@ namespace HGOBUC_HFT_2021222.Logic.Interfaces
         Movie Read(int id);
         void Update(Movie item);
         void Delete(int id);
+        List<string> getListofNonCruds();
         IEnumerable<Movie> ReadAll();
         IEnumerable<KeyValuePair<string, double?>> AvgEpisodesPerNetwork();
         IEnumerable<KeyValuePair<string, double?>> AvgMovieRateByNetwork();

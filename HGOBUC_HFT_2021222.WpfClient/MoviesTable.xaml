@@ -28,6 +28,8 @@
             <Button Content="Create Movie" Command="{Binding CreateMovieCommand}" Margin="10" Padding="10"/>
             <Button Content="Delete Movie" Command="{Binding DeleteMovieCommand}" Margin="10" Padding="10"/>
             <Button Content="Edit Movie" Command="{Binding EditMovieCommand}" Margin="10" Padding="10"/>
+            <ComboBox ItemsSource="{Binding nonCruds}" SelectedItem="{Binding SelectedNonCrud}" Margin="10" Padding="10"/>
+            <Button Content="Show result" Command="{Binding ShowResultCommand}" Margin="20" Padding="20"/>
         </StackPanel>
     </Grid>
 </Window>

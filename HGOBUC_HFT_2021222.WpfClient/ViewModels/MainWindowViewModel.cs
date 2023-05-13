@@ -11,13 +11,15 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 {
     public class MainWindowViewModel: ObservableRecipient
     {
-        public ICommand MoviesTableCommand { get; set; }
+       public ICommand MoviesTableCommand { get; set; }
        public ICommand NetworkTableCommand { get; set; }
        public  ICommand RolesTableCommand { get; set; }
+      
 
 
         public MainWindowViewModel()
         {
+
             MoviesTableCommand = new RelayCommand(
                 () => OpenMovies()
 
