@@ -67,11 +67,11 @@ namespace HGOBUC_HFT_2021222.Repository
                    new Movie("7#Just Between Lovers#2017#16#75#2#10"), //jtbc 16 ep 10 rating 75 min 2017
                    new Movie("8#Red Cuff of the Sleeve#2021#17#80#5#5"), //MBC 17 ep 5 rating 80 min 2021
                    new Movie("9#After the Rain#2018#20#65#3#6"), //KBS 20 ep 6 rating 65 min 2018
-                   new Movie("10#Black Knight#2023#6#50#6#8"),//Netflic 6 ep 8 rating 50 min 2022
+                   new Movie("10#Black Knight#2023#6#50#6#4"),//Netflic 6 ep 8 rating 50 min 2022
                    new Movie("11#Figth For My Way#2017#16#60#3#8"),  //KBS 16 ep 8 rating 60 min 2017
-                   new Movie("12#Tomorrow#2022#16#60#5#10") //MBC 16 ep 10 rating 60 min 2022
-
+                   new Movie("12#Tomorrow#2022#16#60#5#10"), //MBC 16 ep 10 rating 60 min 2022
                    
+
             });
 
             modelBuilder.Entity<Actors>().HasData(new Actors[]
@@ -84,10 +84,11 @@ namespace HGOBUC_HFT_2021222.Repository
                 new Actors("6#Jeon Yeo Bin"),
                 new Actors("7#Kim Ji Won"),
                 new Actors("8#Lee Jon Ho"),
-                new Actors("9#Woon Jin Ah"),
+                new Actors("9#Won Jin Ah"),
                 new Actors("10#Kim Woo Bin"),
                 new Actors("11#Ro Woon"),
-                new Actors("12#Kim Hee Sun")
+                new Actors("12#Kim Hee Sun"),
+                new Actors("13#Lee Se Young")
             });
 
             modelBuilder.Entity<Network>().HasData(new Network[]
@@ -103,25 +104,26 @@ namespace HGOBUC_HFT_2021222.Repository
             modelBuilder.Entity<Role>().HasData(new Role[]
             {
                 //RoleID#MovieID#ActorId#priority#name
-                new Role("1#1#1#1#Vincenzo Cassano"),
-                new Role("2#1#2#3#Jun Woo"),
-                new Role("3#1#6#2#Hong Cha Young"),
-                new Role("4#3#3#1#Yoon Ji Woo"),
-                new Role("5#3#4#2#Jeon Pil Do"),
-                new Role("6#2#5#1#Park Sae Roy"),
-                new Role("7#4#4#1#Do Bae Man"),
-                new Role("8#5#1#1#Eun Som/Sa Ya"),
-                new Role("9#5#7#3#Tan Ya"),
-                new Role("10#6#7#1#Yeom Mi Jung"),
-                new Role("11#7#8#1#Lee Gang Doo"),
-                new Role("12#7#9#1#Han Moon Soo"),
-                new Role("13#8#8#1#Yi San/King Jung Jo"),
-                new Role("14#9#3#4#Soo Jin"),
-                new Role("15#11#5#1#Ko Dong Man"),
-                new Role("16#11#7#1#Choi Ae Ra"),
-                new Role("17#10#10#1#5-8"),
-                new Role("18#12#11#1#Choi Joon Woong"),
+                new Role("1#1#1#1#Vincenzo Cassano"), //1 Vincenzo SongJoongGi
+                new Role("2#1#2#3#Jun Woo"), //2 Vincenzo TaecYeon
+                new Role("3#1#6#2#Hong Cha Young"), //2 Vincenzo Jeon Yeo Bin
+                new Role("4#3#3#1#Yoon Ji Woo"), //4 My Name han soo hee
+                new Role("5#3#4#2#Jeon Pil Do"), // 5 my name ahn bo hyun
+                new Role("6#2#5#1#Park Sae Roy"), //6 itaewon class seo joon
+                new Role("7#4#4#1#Do Bae Man"), //7 military pros ahn bo hyun
+                new Role("8#5#1#1#Eun Som/Sa Ya"), // 8 arthdal chronicles SongJoongGi
+                new Role("9#5#7#3#Tan Ya"), // 9 arthdal    kim ji won
+                new Role("10#6#7#1#Yeom Mi Jung"), //10 my liberation notes kim ji won
+                new Role("11#7#8#1#Lee Gang Doo"), //11 just between lovers lee joon ho
+                new Role("12#7#9#1#Han Moon Soo"),//12 just between lovers Won Jin Ah
+                new Role("13#8#8#2#Yi San/King Jung Jo"), //13 red cuff Lee Jon Ho
+                new Role("14#9#3#4#Soo Jin"), // 14 after the rain  han soo hee
+                new Role("15#11#5#1#Ko Dong Man"), // 15 fight for my way park seo joon
+                new Role("16#11#7#1#Choi Ae Ra"),//16 fight for my way  kim ji won
+                new Role("17#10#10#1#5-8"), // 17 black knight kim woo bin
+                new Role("18#12#11#1#Choi Joon Woong"), 
                 new Role("19#12#12#1#Goo Ryun"),
+                new Role("20#8#13#1#Sung Deok Im"), //20 red cuff  lee se young
 
 
 

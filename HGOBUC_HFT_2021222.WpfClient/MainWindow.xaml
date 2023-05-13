@@ -17,9 +17,9 @@
             <RowDefinition Height="1*"/>
             
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Movies table" HorizontalContentAlignment="Center" Margin="200,30,200,30" Padding="10" Background="PaleVioletRed" Command="{Binding MoviesTableCommand}"/>
-        <Button Grid.Row="1" Content="Network table" HorizontalContentAlignment="Center" Margin="200,30,200,30" Padding="10" Background="PaleVioletRed" Command="{Binding NetworkTableCommand}"/>
-        <Button Grid.Row="2" Content="Roles table" HorizontalContentAlignment="Center" Margin="200,30,200,30" Padding="10" Background="PaleVioletRed" Command="{Binding RolesTableCommand}"/>
+        <Button Grid.Row="0" Content="Movies table" HorizontalContentAlignment="Center" Margin="200,50,200,50" Padding="10" Background="Lavender" Command="{Binding MoviesTableCommand}"/>
+        <Button Grid.Row="1" Content="Network table" HorizontalContentAlignment="Center" Margin="200,50,200,50" Padding="10" Background="PaleVioletRed" Command="{Binding NetworkTableCommand}"/>
+        <Button Grid.Row="2" Content="Roles table" HorizontalContentAlignment="Center" Margin="200,50,200,50" Padding="10" Background="PaleVioletRed" Command="{Binding RolesTableCommand}"/>
        
     </Grid>
 </Window>
