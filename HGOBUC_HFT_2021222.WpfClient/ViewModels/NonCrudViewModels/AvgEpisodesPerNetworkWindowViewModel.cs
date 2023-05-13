@@ -10,7 +10,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels.NonCrudViewModels
     {
         IEnumerable<KeyValuePair<string,double>> avgEpPerNetwork{ get; set; }
         RestService rest;
-        string selectedNonCrud { get; set; }
+        
 
         public IEnumerable<KeyValuePair<string,double>> getAvgEpPerNetwork
         {
@@ -25,9 +25,6 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels.NonCrudViewModels
 
         }
 
-        public void SetSelected(string s)
-        {
-            selectedNonCrud = s;
-        }
+     
     }
 }
