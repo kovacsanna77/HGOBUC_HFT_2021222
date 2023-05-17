@@ -63,16 +63,18 @@ namespace HGOBUC_HFT_2021222.Endpoint
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "HGOBUC_HFT_2021222.Endpoint v1"));
             }
 
+
             app.UseCors(x => x
-                .AllowCredentials()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .WithOrigins("http://localhost:2841"));
+               .AllowCredentials()
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .WithOrigins("http://localhost:43094"));
 
 
             app.UseRouting();
-           
 
+
+            
 
             app.UseAuthorization();
 
