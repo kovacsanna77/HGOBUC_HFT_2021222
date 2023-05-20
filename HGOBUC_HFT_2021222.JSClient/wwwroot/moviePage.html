@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Movie UI</title>
+    <link rel="stylesheet" href="movieStyle.css" />
+</head>
+<body>
+    <h1>Movie catalog</h1>
+
+    <div id="formdiv">
+        <label>Movie name</label>
+        <input type="text" id="moviename" />
+        <button type="button" onclick="create()">Add Movie</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Aired</th>
+                <th>Episodes</th>
+                <th>Duration</th>
+                <th>Rating</th>
+                <th>Network</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="movieScript.js"></script>
+</body>
+</html>
