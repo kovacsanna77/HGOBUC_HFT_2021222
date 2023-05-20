@@ -1,6 +1,7 @@
 ﻿let movies = [];
 let connection = null;
 getdata();
+
 setupSignalR();
 
 
@@ -41,8 +42,8 @@ async function getdata() {
         .then(x => x.json())
         .then(y => {
             movies = y;
-            //console.log(movies);
-            display();
+            console.log(movies);
+           display();
         });
 }
 
@@ -90,4 +91,5 @@ function create() {
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });
+    
 }
