@@ -18,6 +18,9 @@ function setupSignalR() {
     connection.on("MovieDeleted", (user, message) => {
         getdata();
     });
+    connection.on("MovieUpdated", (user, message) => {
+        getdata();
+    });
 
     connection.onclose(async () => {
         await start();
@@ -38,7 +41,7 @@ async function start() {
 };
 
 async function getdata() {
-    await fetch('http://localhost:27826/Movie')
+    await fetch('http://localhost:27826/Movie/')
         .then(x => x.json())
         .then(y => {
             movies = y;
@@ -48,7 +51,7 @@ async function getdata() {
 }
 
 function display() {
-    document.getElementById('resultarea').innerHTML += '';
+    document.getElementById('resultarea').innerHTML = '';
     movies.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.movieId + "</td>"
@@ -64,7 +67,7 @@ function display() {
 }
 
 function remove(id) {
-    fetch('http://localhost:27826/Movie' + id, {
+    fetch('http://localhost:27826/Movie/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -79,15 +82,17 @@ function remove(id) {
 
 function create() {
     let name = document.getElementById('moviename').value;
-    fetch('http://localhost:27826/Movie', {
+    var _movie = {networkName: "-"}
+    fetch('http://localhost:27826/Movie/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { title: name })
+            { title: name, network: _movie })
     })
         .then(response => response)
         .then(data => {
             console.log('Success:', data);
+            console.log(movies);
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });

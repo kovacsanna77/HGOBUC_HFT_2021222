@@ -1,6 +1,7 @@
 ﻿using HGOBUC_HFT_2021222.Models;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
+using System.Linq;
 using System.Windows.Input;
 
 namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
@@ -45,18 +46,20 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                 {
                     roles.Add(new Role()
                     {
-                        RoleName = SelectedRole.RoleName
+                       
+                        RoleName = SelectedRole.getCopy().RoleName
                     });
                 }
                 );
 
             DeleteRoleCommand = new RelayCommand(
-                () => roles.Delete(SelectedRole.RoleId)
+                () => roles.Delete(SelectedRole.RoleId),
+                 () => SelectedRole != null
                 );
 
             EditRoleCommand = new RelayCommand(
-                () => roles.Update(SelectedRole),
-                () => SelectedRole != null
+                () => roles.Update(SelectedRole)
+               
                 );
 
             SelectedRole = new Role();

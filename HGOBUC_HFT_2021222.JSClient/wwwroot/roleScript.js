@@ -17,6 +17,9 @@ function setupSignalR() {
     connection.on("RoleDeleted", (user, message) => {
         getdata();
     });
+    connection.on("RoleUpdated", (user, message) => {
+        getdata();
+    });
 
     connection.onclose(async () => {
         await start();
@@ -46,11 +49,11 @@ async function getdata() {
 }
 
 function display() {
-    document.getElementById('resultarea').innerHTML += '';
+    document.getElementById('resultarea').innerHTML = '';
     networks.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.roleId + "</td>"
-        + "<td>" + t.roleName + "</td>"
+        + "<td>" + t.roleName + "</td><td>"+ t.priority + "</td>"
         + "<td>" + t.actor.actorName + "</td><td>"
             + `<button type="button" onclick="remove(${t.roleId})">Delete</button>`
             + "</td></tr>";
@@ -58,7 +61,7 @@ function display() {
 }
 
 function remove(id) {
-    fetch('http://localhost:27826/Role' + id, {
+    fetch('http://localhost:27826/Role/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -74,11 +77,12 @@ function remove(id) {
 
 function create() {
     let name = document.getElementById('rolename').value;
+    var _actor = { actorName: "-" };
     fetch('http://localhost:27826/Role', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { roleName: name })
+            { roleName: name, actor: _actor })
     })
         .then(response => response)
         .then(data => {

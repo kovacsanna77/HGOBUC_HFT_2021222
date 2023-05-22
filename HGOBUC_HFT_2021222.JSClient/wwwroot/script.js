@@ -29,7 +29,6 @@ function Actorswith5ratingandmovie() {
 }
 
 
-
 function AvgRatingByNetwork() {
     fetch('http://localhost:27826/Stat/AvgMovieRateByNetwork')
         .then(x => x.json())

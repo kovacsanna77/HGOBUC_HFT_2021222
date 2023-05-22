@@ -33,5 +33,17 @@ namespace HGOBUC_HFT_2021222.Models
             Priority = int.Parse(split[3]);
             RoleName = split[4];
         }
+
+        public Role getCopy()
+        {
+            
+                return new Role()
+                {
+                    RoleId = this.RoleId,
+                    RoleName = this.RoleName,
+                    Priority = this.Priority
+                };
+            
+        }
     }
 }

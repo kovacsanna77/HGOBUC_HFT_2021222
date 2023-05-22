@@ -17,13 +17,14 @@ function setupSignalR() {
     connection.on("NetworkDeleted", (user, message) => {
         getdata();
     });
+    connection.on("NetworkUpdated", (user, message) => {
+        getdata();
+    });
 
     connection.onclose(async () => {
         await start();
     });
     start();
-
-
 }
 
 async function start() {
@@ -36,18 +37,20 @@ async function start() {
     }
 };
 async function getdata() {
+  
     await fetch('http://localhost:27826/Network')
         .then(x => x.json())
         .then(y => {
             networks = y;
            
-            display();
+           display();
         });
+   
 }
 
 function display() {
    
-    document.getElementById('resultarea').innerHTML += '';
+    document.getElementById('resultarea').innerHTML = '';
     networks.forEach(t => {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.networkId + "</td>"
@@ -58,7 +61,7 @@ function display() {
 }
 
 function remove(id) {
-    fetch('http://localhost:27826/Network' + id, {
+    fetch('http://localhost:27826/Network/' + id, {
         method: 'DELETE',
         headers: { 'Content-Type': 'application/json', },
         body: null
@@ -66,6 +69,7 @@ function remove(id) {
         .then(response => response)
         .then(data => {
             console.log('Success:', data);
+            console.log(networks.length);
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });
@@ -83,6 +87,7 @@ function create() {
         .then(response => response)
         .then(data => {
             console.log('Success:', data);
+            console.log(networks.length);
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });
