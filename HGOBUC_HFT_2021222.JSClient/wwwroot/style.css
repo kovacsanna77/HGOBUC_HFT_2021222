@@ -1,1 +1,58 @@
-﻿
+﻿*{
+    font-family: 'Yu Gothic';
+}
+/*a{
+    padding: 10px;
+    margin: 10px;
+    font-weight: bold;
+    font-size: 16px;
+}*/
+h3{
+   font-family: Gotham;
+}
+table{
+    border-collapse: collapse;
+    position: center;
+    width: 40%;
+ }
+ 
+table, thead {
+    
+    background-color: rgb(195, 177, 225);
+}
+tbody {
+    background-color: rgb(250, 247, 255);  
+}
+th, td{
+    padding: 5px;
+}
+hr.solid {
+    border-top: 3px solid #bbb;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    
+}
+li {
+    display: inline;
+    float: left;
+    background-color: rgb(250, 247, 255);
+}
+    li a {
+        color: black;
+        text-align: center;
+        padding: 14px 16px;
+        text-decoration: none;
+        background-color: rgb(103, 74, 151);
+    }
+    li a:hover {
+        background-color: rgb(195, 177, 225);
+    }
+a {
+    display: block;
+    padding: 8px;
+    background-color: #dddddd;
+}

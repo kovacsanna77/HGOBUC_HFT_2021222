@@ -35,6 +35,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 				OnPropertyChanged();
 				(DeleteNetworkCommand as RelayCommand).NotifyCanExecuteChanged();
 				(EditNetworkCommand as RelayCommand).NotifyCanExecuteChanged();
+                
 
 
 
@@ -53,13 +54,14 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 				{
 					networks.Add(new Network()
 					{
-						NetworkName = SelectedNetwork.NetworkName
+						NetworkName = SelectedNetwork.getCopy().NetworkName
+						
 					});
 				}
 				);
 
 			DeleteNetworkCommand = new RelayCommand(
-				() => networks.Delete(selectedNetwork.NetworkId),
+				() => networks.Delete(SelectedNetwork.NetworkId),
 				() =>
                 {
                     return selectedNetwork != null;
@@ -68,9 +70,9 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                 );
 
 			EditNetworkCommand = new RelayCommand(
-				() => networks.Update(SelectedNetwork),
-				() => SelectedNetwork != null
+				() => networks.Update(SelectedNetwork)
 				);
+
 			SelectedNetwork = new Network();
 		}
 

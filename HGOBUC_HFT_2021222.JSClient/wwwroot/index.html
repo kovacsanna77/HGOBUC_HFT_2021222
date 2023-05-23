@@ -2,30 +2,101 @@
 <html>
 <head>
     <meta charset="utf-8" />
-    <title>MovieUI</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>UI</title>
+    <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <h1>Movies Catalog</h1>
-    <table>
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Title</th>
-                <th>Aired</th>
-                <th>Episodes</th>
-                <th>Duration</th>
-                <th>Network</th>
-                <th>Rating</th>
-            </tr>
-        </thead>
-        <tbody id="resultarea">
-            <tr>
-                <td>100</td>
-                <td>LOL</td>
-            </tr>
-        </tbody>
-    </table>
+    <ul>
+        <li>
+            <a href="moviePage.html">Dramas table</a>
+        </li>
+        <li>
+            <a href="networkpage.html">Networks table</a>
+        </li>
+        <li>
+            <a href="rolepage.html">Roles table</a>
+        </li>
+    </ul>
+    
+
+    <div id="_movies10">
+        <h3>Average episodes by Network </h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Network</th>
+                    <th>Episodes</th>
+                </tr>
+            </thead>
+            <tbody id="avgEpPerNetwork">
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="solid">
+
+    <div id="_movies10">
+        <h3>Average ratings by network</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Network</th>
+                    <th>Ratings</th>
+                </tr>
+            </thead>
+            <tbody id="avgratingnetwork">
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="solid">
+
+    <div id="_movies10">
+        <h3>10/10 Dramas with main actor</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody id="movies10">
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="solid">
+
+    <div id="actor5">
+        <h3>Actors with 5 rated dramas, with the movie title</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Title</th>
+                </tr>
+            </thead>
+            <tbody id="actorswith5">
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="solid">
+
+    <div id="actor10">
+        <h3>Actors with 10 rated dramas</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            <tbody id="actorswith10">
+            </tbody>
+        </table>
+    </div>
+
+    <hr class="solid">
 
     <script src="script.js"></script>
 </body>

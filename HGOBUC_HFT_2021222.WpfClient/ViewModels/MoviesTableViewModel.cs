@@ -20,8 +20,6 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
     {
         public RestCollection<Movie> Movies { get; set; }
 
-        
-
         public List<string> nonCruds { get; set; }
 
         private string selectedNonCrud;
@@ -50,9 +48,10 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 
                 //    };
                 //}
-                OnPropertyChanged();
+                //OnPropertyChanged();
                 (DeleteMovieCommand as RelayCommand).NotifyCanExecuteChanged();
                 (EditMovieCommand as RelayCommand).NotifyCanExecuteChanged();
+                (CreateMovieCommand as RelayCommand).NotifyCanExecuteChanged();
             }
         }
 
@@ -75,7 +74,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
            
 
             nonCruds = getListofNonCruds();
-            //mindegyiknek külön ablak, hogy lehessen normálisan ábrázolni? 
+         
 
             ShowResultCommand = new RelayCommand(() => OpenNonCrud(SelectedNonCrud));
 
@@ -84,8 +83,12 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                     {
                         Movies.Add(new Movie()
                         {
-                            Title = SelectedMovie.getCopy().Title
-                        });
+
+                            Title = SelectedMovie.getCopy().Title,
+                            Network = new Network() { NetworkName = "-" }
+
+                        }) ;
+                        
                     }
                 );
 
@@ -104,7 +107,9 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                     return SelectedMovie != null;
                 }
             );
+            
             SelectedMovie = new Movie();
+           
         }
 
         public List<string> getListofNonCruds()

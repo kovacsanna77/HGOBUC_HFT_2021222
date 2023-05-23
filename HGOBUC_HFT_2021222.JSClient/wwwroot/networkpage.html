@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Network UI</title>
+    <link rel="stylesheet" href="networkStyle.css" />
+</head>
+<body>
+    <h1>Network Catalog</h1>
+
+    <div id="formdiv">
+        <label>Network name</label>
+        <input type="text" id="networkname" />
+        <button type="button" onclick="create()">Add Network</button>
+    </div>
+
+    <div id="updateformdiv">
+        <label>Network name</label>
+        <input type="text" id="networktoUpdate" />
+        <button type="button" onclick="update()">Update Network</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody id="resultarea">
+        </tbody>
+    </table>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.1/signalr.js"></script>
+    <script src="networkScript.js"></script>
+</body>
+</html>
