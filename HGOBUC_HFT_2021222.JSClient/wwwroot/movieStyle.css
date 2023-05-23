@@ -37,6 +37,22 @@ th {
     #formdiv label {
         font-weight: bolder;
     }
+#upadeformdiv {
+    display: none;
+    width: 80%;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+    #updateformdiv label, button, input {
+        display: inline;
+        margin: 10px;
+        padding: 7px;
+    }
+
+    #updateformdiv label {
+        font-weight: bolder;
+    }
 
 table button {
     padding: 2px;

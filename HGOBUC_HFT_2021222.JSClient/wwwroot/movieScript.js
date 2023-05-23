@@ -1,5 +1,7 @@
 ﻿let movies = [];
 let connection = null;
+
+let movieIdtoupdate = -1;
 getdata();
 
 setupSignalR();
@@ -62,9 +64,36 @@ function display() {
             + "<td>" + t.rating + "</td>"
         + "<td>" + t.network.networkName + "</td><td>"
         + `<button type="button" onclick="remove(${t.movieId})">Delete</button>`
+        + `<button type="button" onclick="ShowUpdate(${t.movieId})">Update</button>`
             + "</td></tr>";
     });
 }
+function ShowUpdate(id) {
+    document.getElementById('movienametoUpdate').value = movies.find(t => t[movieId] == id)['actorName'];
+    document.getElementById('updateformdiv').style.display = 'flex';
+    movieIdtoupdate = id;
+}
+
+function update() {
+    document.getElementById('updateformdiv').style.display = 'none';
+    let name = document.getElementById('movienametoUpdate').value;
+    
+    fetch('http://localhost:27826/Movie/', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            { title: name, movieId: movieIdtoupdate, network: _movie })
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            console.log(movies);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+
+}
+
 
 function remove(id) {
     fetch('http://localhost:27826/Movie/' + id, {
