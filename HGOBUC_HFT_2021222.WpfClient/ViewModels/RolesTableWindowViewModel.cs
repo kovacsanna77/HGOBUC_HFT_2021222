@@ -47,7 +47,9 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                     roles.Add(new Role()
                     {
                        
-                        RoleName = SelectedRole.getCopy().RoleName
+                        RoleName = SelectedRole.getCopy().RoleName,
+                        Actor = new Actors() { ActorName= "-"},
+                    
                     });
                 }
                 );

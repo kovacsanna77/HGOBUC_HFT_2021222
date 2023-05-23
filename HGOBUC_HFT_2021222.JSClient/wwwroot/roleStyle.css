@@ -41,3 +41,15 @@ th {
 table button {
     padding: 2px;
 }
+.upadeformdiv {
+    display: none;
+}
+
+.updateformdiv label, button, input {
+    margin: 10px;
+    padding: 7px;
+}
+
+.updateformdiv label {
+    font-weight: bolder;
+}

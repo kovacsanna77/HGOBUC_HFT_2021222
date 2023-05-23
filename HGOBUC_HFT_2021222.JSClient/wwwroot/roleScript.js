@@ -1,5 +1,6 @@
 ﻿let roles = [];
 let connection = null;
+let roleIdtoupdate = -1;
 getdata();
 setupSignalR();
 
@@ -55,11 +56,36 @@ function display() {
             "<tr><td>" + t.roleId + "</td>"
         + "<td>" + t.roleName + "</td><td>"+ t.priority + "</td>"
         + "<td>" + t.actor.actorName + "</td><td>"
-            + `<button type="button" onclick="remove(${t.roleId})">Delete</button>`
+        + `<button type="button" onclick="remove(${t.roleId})">Delete</button>`
+        + `<button type="button" onclick="ShowUpdate(${t.roleId})">Update</button>`
             + "</td></tr>";
     });
 }
+function ShowUpdate(id) {
+    document.getElementById('roleToUpdate').value = roles.find(t => t.roleId == id)['roleName'];
+    document.getElementById('updateformdiv').style.display = 'inline';
+    roleIdtoupdate = id;
+}
+function update() {
 
+    let name = document.getElementById('roletoUpdate').value;
+    document.getElementById('updateformdiv').style.display = 'none';
+
+    fetch('http://localhost:27826/Role', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            { roleName: name, roleId: roleIdtoupdate })
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+            console.log(roles);
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+
+}
 function remove(id) {
     fetch('http://localhost:27826/Role/' + id, {
         method: 'DELETE',

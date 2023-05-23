@@ -2,9 +2,10 @@
 let connection = null;
 
 let movieIdtoupdate = -1;
+setupSignalR();
 getdata();
 
-setupSignalR();
+
 
 
 function setupSignalR() {
@@ -69,20 +70,20 @@ function display() {
     });
 }
 function ShowUpdate(id) {
-    document.getElementById('movienametoUpdate').value = movies.find(t => t[movieId] == id)['actorName'];
-    document.getElementById('updateformdiv').style.display = 'flex';
+    document.getElementById('movienametoUpdate').value = movies.find(t => t.movieId== id)['title'];
+    document.getElementById('updateformdiv').style.display = 'inline';
     movieIdtoupdate = id;
 }
 
 function update() {
-    document.getElementById('updateformdiv').style.display = 'none';
+   
     let name = document.getElementById('movienametoUpdate').value;
     
-    fetch('http://localhost:27826/Movie/', {
+    fetch('http://localhost:27826/Movie', {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json', },
         body: JSON.stringify(
-            { title: name, movieId: movieIdtoupdate, network: _movie })
+            { title: name, movieId: movieIdtoupdate })
     })
         .then(response => response)
         .then(data => {
@@ -91,7 +92,7 @@ function update() {
             getdata();
         })
         .catch((error) => { console.error('Error:', error); });
-
+    document.getElementById('updateformdiv').style.display = 'none';
 }
 
 
@@ -111,7 +112,7 @@ function remove(id) {
 
 function create() {
     let name = document.getElementById('moviename').value;
-    var _movie = {networkName: "-"}
+    var _movie = { networkName: "-" };
     fetch('http://localhost:27826/Movie/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', },

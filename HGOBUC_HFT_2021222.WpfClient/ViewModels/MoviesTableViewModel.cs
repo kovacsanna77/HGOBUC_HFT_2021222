@@ -48,7 +48,7 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
 
                 //    };
                 //}
-                OnPropertyChanged();
+                //OnPropertyChanged();
                 (DeleteMovieCommand as RelayCommand).NotifyCanExecuteChanged();
                 (EditMovieCommand as RelayCommand).NotifyCanExecuteChanged();
                 (CreateMovieCommand as RelayCommand).NotifyCanExecuteChanged();
@@ -83,10 +83,12 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                     {
                         Movies.Add(new Movie()
                         {
-                            
-                            Title = SelectedMovie.getCopy().Title
+
+                            Title = SelectedMovie.getCopy().Title,
+                            Network = new Network() { NetworkName = "-" }
 
                         }) ;
+                        
                     }
                 );
 
@@ -105,7 +107,9 @@ namespace HGOBUC_HFT_2021222.WpfClient.ViewModels
                     return SelectedMovie != null;
                 }
             );
+            
             SelectedMovie = new Movie();
+           
         }
 
         public List<string> getListofNonCruds()

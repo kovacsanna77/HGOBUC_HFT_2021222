@@ -1,5 +1,6 @@
 ﻿let networks = [];
 let connection = null;
+let networkIdtoupdate = -1;
 getdata();
 setupSignalR();
 
@@ -55,11 +56,37 @@ function display() {
         document.getElementById('resultarea').innerHTML +=
             "<tr><td>" + t.networkId + "</td>"
             + "<td>" + t.networkName + "</td><td>"
-            + `<button type="button" onclick="remove(${t.networkId})">Delete</button>`
+        + `<button type="button" onclick="remove(${t.networkId})">Delete</button>`
+        + `<button type="button" onclick="ShowUpdate(${t.networkId})">Update</button>`
             + "</td></tr>";
     });
 }
 
+function ShowUpdate(id) {
+    document.getElementById('networktoUpdate').value = networks.find(t => t.networkId == id)['networkName'];
+    document.getElementById('updateformdiv').style.display = 'inline';
+   networkIdtoupdate = id;
+}
+function update() {
+
+    let name = document.getElementById('networktoUpdate').value;
+    document.getElementById('updateformdiv').style.display = 'none';
+
+    fetch('http://localhost:27826/Network/', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json', },
+        body: JSON.stringify(
+            { networkName: name, networkId: networkIdtoupdate })
+    })
+        .then(response => response)
+        .then(data => {
+            console.log('Success:', data);
+           
+            getdata();
+        })
+        .catch((error) => { console.error('Error:', error); });
+    
+}
 function remove(id) {
     fetch('http://localhost:27826/Network/' + id, {
         method: 'DELETE',
